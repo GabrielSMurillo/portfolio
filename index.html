@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Santiago Murillo | Data Scientist & Biomedical Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A101F; /* Deeper Navy */
+            color: #E5E7EB;
+        }
+        .accent-color { color: #22D3EE; } /* Cyan */
+        .accent-green { color: #34d399; }
+        .bg-accent-color { background-color: #22D3EE; }
+        .bg-secondary { background-color: #1E293B; } /* Slate */
+        .border-secondary { border-color: #334155; }
+        
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.3);
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(10, 16, 31, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1E293B;
+        }
+        .typewriter-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.5em;
+            background-color: #22D3EE;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animated Gradient Background */
+        #hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.1), transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1), transparent 30%);
+            animation: move-gradient 20s linear infinite;
+            z-index: -1;
+        }
+        @keyframes move-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Timeline styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            padding-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 5px;
+            bottom: -5px;
+            width: 2px;
+            background-color: #334155;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #1E293B;
+            border: 2px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #22D3EE;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-icon {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px #22D3EE;
+            color: white;
+        }
+        
+        /* Language Toggle Switch */
+        .lang-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        .lang-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 26px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #22D3EE;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        /* Project Focus Effect */
+        #project-grid:hover .project-card:not(:hover) {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+        .project-card {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero-section" aria-label="Inicio">
+                <img src="https://imgur.com/a/vRzTRMl" alt="Logo de Gabriel Murillo" class="w-32 md:w-40 h-auto">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-300 hover:accent-color transition-colors" data-key="nav_about">Sobre Mí</a>
+                <a href="#experience" class="text-gray-300 hover:accent-color transition-colors" data-key="nav_experience">Experiencia</a>
+                <a href="#projects" class="text-gray-300 hover:accent-color transition-colors" data-key="nav_projects">Proyectos</a>
+                <a href="#certs" class="text-gray-300 hover:accent-color transition-colors" data-key="nav_certs">Certificaciones</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="flex items-center space-x-2 text-sm font-semibold">
+                    <span class="text-gray-400">🇨🇴</span>
+                    <label class="lang-switch">
+                        <input type="checkbox" id="language-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="text-gray-400">🇺🇸</span>
+                </div>
+                <a href="CV_GSMB.pdf" target="_blank" class="bg-accent-color text-gray-900 font-bold px-5 py-2 rounded-full hover:bg-cyan-300 transition-transform hover:scale-105" data-key="nav_cv">
+                    Descargar CV
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary">
+            <a href="#about" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_about_mobile">Sobre Mí</a>
+            <a href="#experience" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_experience_mobile">Experiencia</a>
+            <a href="#projects" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_projects_mobile">Proyectos</a>
+            <a href="#certs" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_certs_mobile">Certificaciones</a>
+            <a href="#contact" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_contact_mobile">Contacto</a>
+            <a href="CV_GSMB.pdf" target="_blank" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_cv_mobile">Descargar CV</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <div class="max-w-4xl z-10">
+                <img src="https://imgur.com/a/QXqYBIx" alt="Foto de Gabriel Santiago Murillo" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                    Gabriel Santiago Murillo
+                </h1>
+                <p class="text-xl md:text-2xl mt-4 text-gray-300 font-medium">
+                    <span id="typewriter"></span><span class="typewriter-cursor"></span>
+                </p>
+                <p class="mt-6 max-w-2xl mx-auto text-gray-400" data-key="hero_subtitle">
+                    Soy el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.
+                </p>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="https://linkedin.com/in/gabriel-santiago-murillo01" target="_blank" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" id="github-link" target="_blank" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-github"></i></a>
+                    <a href="mailto:santiagomurillob@gmail.com" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 fade-in-section">
+            <div class="grid md:grid-cols-5 gap-12 items-center">
+                <div class="md:col-span-3 text-lg text-gray-300 space-y-4">
+                    <h2 class="text-4xl font-bold text-white mb-6" data-key="about_title">Mi Protocolo</h2>
+                    <div data-key="about_desc">
+                        <p>
+                           Mi carrera no es una colección de títulos, sino una trayectoria deliberada hacia una comprensión más profunda. Comencé con la <b class="text-white">Ingeniería Biomédica</b> para entender el 'cómo' de los sistemas biológicos desde una perspectiva analítica. Mi curiosidad me llevó a la <b class="text-white">Medicina</b>, buscando el 'porqué' y el contexto humano detrás de cada sistema.
+                        </p>
+                        <p>
+                           Hoy, he unificado estas perspectivas en la <b class="accent-color">ciencia de datos</b>. No solo busco soluciones; busco las preguntas correctas. Mi objetivo es utilizar la IA para traducir la complejidad biológica en claridad, creando herramientas que potencien la capacidad humana en el sector salud.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="glass-card p-6 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold text-white mb-4" data-key="about_stack_title">Stack Tecnológico</h3>
+                        <div id="tech-stack-container" class="flex flex-wrap gap-3">
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300">Python</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 50ms;">SQL</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 100ms;">R</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 150ms;">Power BI</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 200ms;">Tableau</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 250ms;">Scikit-Learn</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 300ms;">TensorFlow</span>
+                            <span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full opacity-0 translate-y-3 transition-all duration-300" style="transition-delay: 350ms;">Git & GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="experience_title">Experiencia Profesional</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3 class="text-xl font-bold text-white" data-key="exp1_title">Profesor Asociado en Estadística y Herramientas de Datos</h3>
+                    <p class="text-sm text-gray-400 mb-2">Fundación de Educación Superior Nueva América (FESNA) | 2024 - Presente</p>
+                    <p class="text-gray-300" data-key="exp1_desc">Diseño y dicto clases virtuales de Excel y Python, enfocadas en la automatización de procesos y el análisis de datos para contextos de negocio, mejorando la participación estudiantil a través de materiales interactivos.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="text-xl font-bold text-white" data-key="exp2_title">Supervisor Bilingüe</h3>
+                    <p class="text-sm text-gray-400 mb-2">Teleperformance | 2023</p>
+                    <p class="text-gray-300" data-key="exp2_desc">Lideré equipos interdisciplinarios, utilizando análisis de datos en Excel y Tableau para visualizar KPIs y ejecutar planes de acción que superaron consistentemente los objetivos del cliente.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="text-xl font-bold text-white" data-key="exp3_title">Representante de Servicio al Cliente Bilingüe</h3>
+                    <p class="text-sm text-gray-400 mb-2">Teleperformance | 2022</p>
+                    <p class="text-gray-300" data-key="exp3_desc">Gestioné consultas para una clientela bancaria multinacional, logrando altos índices de satisfacción a través de una comunicación bilingüe clara y efectiva.</p>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-calculator"></i></div>
+                    <h3 class="text-xl font-bold text-white" data-key="exp4_title">Técnico Contable</h3>
+                    <p class="text-sm text-gray-400 mb-2">Topografía Pozos Profundos Aguas Subterráneas LTDA | 2015 - 2016</p>
+                    <p class="text-gray-300" data-key="exp4_desc">Gestioné el ciclo completo de cuentas por pagar y por cobrar, preparando informes financieros periódicos y asegurando el cumplimiento de las normativas contables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="projects_title">Proyectos Destacados</h2>
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project cards will be injected here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section id="certs" class="py-24 fade-in-section">
+            <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="certs_title">Formación Continua y Certificaciones</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3 accent-green" data-key="certs1_title">Ciencia de Datos & IA</h3>
+                    <p class="text-gray-300" data-key="certs1_desc">Un arsenal completo para el ciclo de vida de los datos, desde la extracción y el modelado hasta la implementación de redes neuronales profundas.</p>
+                    <div id="certs1-list" class="mt-4 space-y-3">
+                        <!-- Certs will be injected here -->
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3 accent-color" data-key="certs2_title">Herramientas y Gestión</h3>
+                    <p class="text-gray-300" data-key="certs2_desc">Dominio de las herramientas esenciales para la manipulación, análisis y gestión de proyectos, garantizando eficiencia y resultados claros.</p>
+                     <div id="certs2-list" class="mt-4 space-y-3">
+                        <!-- Certs will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 fade-in-section">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-white" data-key="contact_title">Hablemos</h2>
+                <p class="mt-4 text-lg text-gray-400" data-key="contact_desc">
+                    Mi curiosidad es mi motor. Si tienes un desafío complejo, una idea innovadora o una posición donde pueda aportar valor, me encantaría conversar.
+                </p>
+                <a href="mailto:santiagomurillob@gmail.com" class="mt-8 inline-block bg-accent-color text-gray-900 font-bold px-8 py-4 rounded-full text-lg hover:bg-cyan-300 transition-transform hover:scale-105" data-key="contact_button">
+                    Enviar un Mensaje
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary mt-20 border-t border-secondary">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; <span id="year"></span> Gabriel Santiago Murillo. <span data-key="footer_text">Construido con pasión y código.</span></p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden">
+        <div id="modalContent" class="glass-card rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative transform transition-transform duration-300 scale-95">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl">&times;</button>
+            <img id="modalImage" src="" alt="Imagen del Proyecto" class="w-full h-64 object-cover rounded-lg mb-6">
+            <h3 id="modalTitle" class="text-3xl font-bold text-white mb-2"></h3>
+            <div id="modalTags" class="flex flex-wrap gap-2 mb-6"></div>
+            <div id="modalDescription" class="text-gray-300 space-y-4"></div>
+            <div class="mt-8 flex gap-4">
+                <a id="modalGithubLink" href="#" target="_blank" class="flex-1 text-center bg-slate-700 text-white font-semibold px-4 py-3 rounded-lg hover:bg-slate-600 transition-all">
+                    <i class="fab fa-github mr-2"></i><span data-key="modal_github">Ver Código</span>
+                </a>
+                <a id="modalLiveLink" href="#" target="_blank" class="flex-1 text-center bg-accent-color text-gray-900 font-semibold px-4 py-3 rounded-lg hover:bg-cyan-300 transition-all">
+                    <i class="fas fa-external-link-alt mr-2"></i><span data-key="modal_live">Demo en Vivo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- CONFIGURACIÓN ---
+        const GITHUB_USERNAME = 'GabrielSMurillo';
+
+        const projects = {
+            es: [
+                { title: 'Modelo Epidemiológico del Dengue', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=Simulacion+Dengue', tags: ['Python', 'Pandas', 'Modelado'], description: `<p>Desarrollo de un modelo computacional para simular la dinámica de transmisión del dengue, con el fin de identificar variables clave y evaluar el impacto de estrategias de intervención en salud pública.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Proceso:</h4><ul class='list-disc list-inside space-y-2'><li>Recopilación y limpieza de datos epidemiológicos.</li><li>Implementación de un modelo SIR modificado.</li><li>Análisis de sensibilidad de variables clave.</li><li>Visualización de resultados para comunicación efectiva.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/dengue-model`, liveUrl: '#' },
+                { title: 'Análisis de Imágenes Médicas (Rayos X)', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=Analisis+Rayos+X', tags: ['Python', 'OpenCV', 'Deep Learning'], description: `<p>Creación de un flujo de trabajo automatizado para procesar y analizar imágenes de rayos X de tórax, sirviendo como una herramienta de apoyo para el diagnóstico radiológico.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li>Preprocesamiento para normalización y reducción de ruido.</li><li>Segmentación de pulmones usando algoritmos de contornos.</li><li>Implementación de una CNN para clasificación.</li><li>Generación de heatmaps para interpretabilidad del modelo.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/medical-image-analysis`, liveUrl: '#' },
+                { title: 'Análisis de Señales EEG', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=Procesamiento+EEG', tags: ['Python', 'Scipy', 'TensorFlow', 'Neuroingeniería'], description: `<p>Aplicación de algoritmos de procesamiento de señales y machine learning para analizar datos de EEG, extrayendo características para interpretar y clasificar respuestas neuronales.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Metodología:</h4><ul class='list-disc list-inside space-y-2'><li>Filtrado de señales para eliminar artefactos.</li><li>Extracción de características en dominio de tiempo y frecuencia.</li><li>Entrenamiento de un modelo RNN para clasificación de señales.</li><li>Visualización de topografía cerebral.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/eeg-signal-processing`, liveUrl: '#' }
+            ],
+            en: [
+                { title: 'Dengue Epidemiological Model', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=Dengue+Simulation', tags: ['Python', 'Pandas', 'Modeling'], description: `<p>Development of a computational model to simulate the dynamics of dengue transmission, aiming to identify key variables and assess the impact of public health intervention strategies.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Process:</h4><ul class='list-disc list-inside space-y-2'><li>Collection and cleaning of epidemiological data.</li><li>Implementation of a modified SIR model.</li><li>Sensitivity analysis of key variables.</li><li>Effective visualization of results for communication.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/dengue-model`, liveUrl: '#' },
+                { title: 'Medical Image Analysis (X-rays)', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=X-Ray+Analysis', tags: ['Python', 'OpenCV', 'Deep Learning'], description: `<p>Creation of an automated workflow to process and analyze chest X-ray images, serving as a support tool for radiological diagnosis.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li>Preprocessing for normalization and noise reduction.</li><li>Lung segmentation using contour algorithms.</li><li>Implementation of a CNN for classification.</li><li>Generation of heatmaps for model interpretability.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/medical-image-analysis`, liveUrl: '#' },
+                { title: 'EEG Signal Analysis', image: 'https://placehold.co/600x400/0A101F/22D3EE?text=EEG+Processing', tags: ['Python', 'Scipy', 'TensorFlow', 'Neuroengineering'], description: `<p>Application of signal processing and machine learning algorithms to analyze EEG data, extracting features to interpret and classify neural responses.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Methodology:</h4><ul class='list-disc list-inside space-y-2'><li>Signal filtering to remove artifacts.</li><li>Feature extraction in time and frequency domains.</li><li>Training of an RNN model for signal classification.</li><li>Visualization of brain topography.</li></ul>`, githubUrl: `https://github.com/${GITHUB_USERNAME}/eeg-signal-processing`, liveUrl: '#' }
+            ]
+        };
+
+        const certs = [
+            { name: 'IBM Data Science Professional Certificate', url: 'https://coursera.org/share/913eeba63920e37e3ec2e6a1b6e8f112', category: 1, desc_es: 'Fundamentos completos de la ciencia de datos, desde Python hasta machine learning.', desc_en: 'Comprehensive fundamentals of data science, from Python to machine learning.' },
+            { name: 'IBM Data Analyst Professional Certificate', url: 'https://coursera.org/share/c9b9ed2a95f0ce7f9c198ebc60b32f2b', category: 1, desc_es: 'Dominio del ciclo de vida del análisis de datos, incluyendo visualización y storytelling.', desc_en: 'Mastery of the data analysis lifecycle, including visualization and storytelling.' },
+            { name: 'Neural Networks and Deep Learning', url: 'https://www.coursera.org/account/accomplishments/verify/422WTQDNHRVJ', category: 1, desc_es: 'Construcción y optimización de redes neuronales profundas con DeepLearning.AI.', desc_en: 'Building and optimizing deep neural networks with DeepLearning.AI.' },
+            { name: 'Introduction to Clinical Data Science', url: 'https://www.coursera.org/account/accomplishments/verify/CVKKYXMSFMGB', category: 1, desc_es: 'Aplicación de la ciencia de datos en el contexto específico de la investigación clínica.', desc_en: 'Applying data science within the specific context of clinical research.' },
+            { name: 'Python for Everybody Specialization', url: 'https://www.coursera.org/account/accomplishments/specialization/N86VA2E6R1SQ', category: 2, desc_es: 'Fundamentos sólidos de programación en Python desde cero con la U. de Michigan.', desc_en: 'Solid Python programming fundamentals from scratch with the U. of Michigan.' },
+            { name: 'Excel Skills for Business Specialization', url: 'https://www.coursera.org/account/accomplishments/specialization/FHCLKKOI2QJ9', category: 2, desc_es: 'Dominio avanzado de Excel para análisis y modelado de negocios.', desc_en: 'Advanced mastery of Excel for business analysis and modeling.' },
+            { name: 'Harnessing Data with Power BI', url: 'https://www.coursera.org/account/accomplishments/verify/RLW6V8YZ5M0W', category: 2, desc_es: 'Creación de dashboards interactivos y reportes impactantes con Microsoft Power BI.', desc_en: 'Creating interactive dashboards and impactful reports with Microsoft Power BI.' },
+            { name: 'Project Management Principles and Practices', url: 'https://www.coursera.org/account/accomplishments/specialization/certificate/EP7T2ASUFQ6', category: 2, desc_es: 'Gestión de proyectos de principio a fin, cubriendo iniciación, planificación y ejecución.', desc_en: 'End-to-end project management, covering initiation, planning, and execution.'}
+        ];
+
+        const translations = {
+            es: {
+                // Typewriter
+                typewriter: ["Ingeniero Biomédico", "Científico de Datos", "Solucionador de Retos"],
+                // Nav
+                nav_about: 'Sobre Mí', nav_experience: 'Experiencia', nav_projects: 'Proyectos', nav_certs: 'Certificaciones', nav_cv: 'Descargar CV',
+                nav_about_mobile: 'Sobre Mí', nav_experience_mobile: 'Experiencia', nav_projects_mobile: 'Proyectos', nav_certs_mobile: 'Certificaciones', nav_contact_mobile: 'Contacto', nav_cv_mobile: 'Descargar CV',
+                // Hero
+                hero_subtitle: 'Soy el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.',
+                // About
+                about_title: 'Mi Protocolo',
+                about_desc: `<p>Mi carrera no es una colección de títulos, sino una trayectoria deliberada hacia una comprensión más profunda. Comencé con la <b class="text-white">Ingeniería Biomédica</b> para entender el 'cómo' de los sistemas biológicos desde una perspectiva analítica. Mi curiosidad me llevó a la <b class="text-white">Medicina</b>, buscando el 'porqué' y el contexto humano detrás de cada sistema.</p><p>Hoy, he unificado estas perspectivas en la <b class="accent-color">ciencia de datos</b>. No solo busco soluciones; busco las preguntas correctas. Mi objetivo es utilizar la IA para traducir la complejidad biológica en claridad, creando herramientas que potencien la capacidad humana en el sector salud.</p>`,
+                about_stack_title: 'Stack Tecnológico',
+                // Experience
+                experience_title: 'Experiencia Profesional',
+                exp1_title: 'Profesor Asociado en Estadística y Herramientas de Datos',
+                exp1_desc: 'Diseño y dicto clases virtuales de Excel y Python, enfocadas en la automatización de procesos y el análisis de datos para contextos de negocio, mejorando la participación estudiantil a través de materiales interactivos.',
+                exp2_title: 'Supervisor Bilingüe',
+                exp2_desc: 'Lideré equipos interdisciplinarios, utilizando análisis de datos en Excel y Tableau para visualizar KPIs y ejecutar planes de acción que superaron consistentemente los objetivos del cliente.',
+                exp3_title: 'Representante de Servicio al Cliente Bilingüe',
+                exp3_desc: 'Gestioné consultas para una clientela bancaria multinacional, logrando altos índices de satisfacción a través de una comunicación bilingüe clara y efectiva.',
+                exp4_title: 'Técnico Contable',
+                exp4_desc: 'Gestioné el ciclo completo de cuentas por pagar y por cobrar, preparando informes financieros periódicos y asegurando el cumplimiento de las normativas contables.',
+                // Projects
+                projects_title: 'Proyectos Destacados',
+                // Certs
+                certs_title: 'Formación Continua y Certificaciones',
+                certs1_title: 'Ciencia de Datos & IA',
+                certs1_desc: 'Un arsenal completo para el ciclo de vida de los datos, desde la extracción y el modelado hasta la implementación de redes neuronales profundas.',
+                certs2_title: 'Herramientas y Gestión',
+                certs2_desc: 'Dominio de las herramientas esenciales para la manipulación, análisis y gestión de proyectos, garantizando eficiencia y resultados claros.',
+                cert_button: 'Ver Credencial',
+                // Contact
+                contact_title: 'Hablemos',
+                contact_desc: 'Mi curiosidad es mi motor. Si tienes un desafío complejo, una idea innovadora o una posición donde pueda aportar valor, me encantaría conversar.',
+                contact_button: 'Enviar un Mensaje',
+                // Footer
+                footer_text: 'Construido con pasión y código.',
+                // Modal
+                modal_github: 'Ver Código',
+                modal_live: 'Demo en Vivo',
+                modal_button: 'Ver Detalles'
+            },
+            en: {
+                // Typewriter
+                typewriter: ["Biomedical Engineer", "Data Scientist", "Challenge Solver"],
+                // Nav
+                nav_about: 'About Me', nav_experience: 'Experience', nav_projects: 'Projects', nav_certs: 'Certifications', nav_cv: 'Download CV',
+                nav_about_mobile: 'About Me', nav_experience_mobile: 'Experience', nav_projects_mobile: 'Projects', nav_certs_mobile: 'Certifications', nav_contact_mobile: 'Contact', nav_cv_mobile: 'Download CV',
+                // Hero
+                hero_subtitle: 'I am the bridge between health and technology, applying data science and AI to create solutions with clinical impact.',
+                // About
+                about_title: 'My Protocol',
+                about_desc: `<p>My career is not a collection of titles, but a deliberate trajectory towards a deeper understanding. I started with <b class="text-white">Biomedical Engineering</b> to understand the 'how' of biological systems from an analytical perspective. My curiosity led me to <b class="text-white">Medicine</b>, seeking the 'why' and the human context behind each system.</p><p>Today, I have unified these perspectives in <b class="accent-color">data science</b>. I don't just look for solutions; I look for the right questions. My goal is to use AI to translate biological complexity into clarity, creating tools that empower human capability in the healthcare sector.</p>`,
+                about_stack_title: 'Tech Stack',
+                // Experience
+                experience_title: 'Professional Experience',
+                exp1_title: 'Associate Professor in Statistics and Data Analysis Tools',
+                exp1_desc: 'I design and deliver virtual classes in Excel and Python, focusing on process automation and data analysis for business contexts, enhancing student engagement through interactive materials.',
+                exp2_title: 'Bilingual Supervisor',
+                exp2_desc: 'I led interdisciplinary teams, using data analysis in Excel and Tableau to visualize KPIs and execute action plans that consistently surpassed client objectives.',
+                exp3_title: 'Bilingual Customer Service Representative',
+                exp3_desc: 'Managed inquiries for a multinational banking clientele, achieving high satisfaction rates through clear and effective bilingual communication.',
+                exp4_title: 'Accounting Technician',
+                exp4_desc: 'Managed the complete accounts payable and receivable cycle, preparing periodic financial reports and ensuring compliance with accounting regulations.',
+                // Projects
+                projects_title: 'Featured Projects',
+                // Certs
+                certs_title: 'Continuous Learning & Certifications',
+                certs1_title: 'Data Science & AI',
+                certs1_desc: 'A complete arsenal for the data lifecycle, from extraction and modeling to the implementation of deep neural networks.',
+                certs2_title: 'Tools & Management',
+                certs2_desc: 'Mastery of essential tools for data manipulation, analysis, and project management, ensuring efficiency and clear results.',
+                cert_button: 'View Credential',
+                // Contact
+                contact_title: 'Let\'s Talk',
+                contact_desc: 'My curiosity is my engine. If you have a complex challenge, an innovative idea, or a position where I can add value, I would love to chat.',
+                contact_button: 'Send a Message',
+                // Footer
+                footer_text: 'Built with passion and code.',
+                // Modal
+                modal_github: 'View Code',
+                modal_live: 'Live Demo',
+                modal_button: 'View Details'
+            }
+        };
+
+        // --- LÓGICA DE LA APLICACIÓN ---
+        const githubLink = document.getElementById('github-link');
+        if (githubLink) githubLink.href = `https://github.com/${GITHUB_USERNAME}`;
+
+        const typewriterElement = document.getElementById('typewriter');
+        let typewriterTexts = translations.es.typewriter;
+        let textIndex = 0;
+        let charIndex = 0;
+        let isErasing = false;
+
+        function type() {
+            if (!typewriterElement) return;
+            const currentText = typewriterTexts[textIndex];
+            if (isErasing) {
+                if (charIndex > 0) {
+                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(type, 50);
+                } else {
+                    isErasing = false;
+                    textIndex = (textIndex + 1) % typewriterTexts.length;
+                    setTimeout(type, 500);
+                }
+            } else {
+                if (charIndex < currentText.length) {
+                    typewriterElement.textContent += currentText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    isErasing = true;
+                    setTimeout(type, 2000);
+                }
+            }
+        }
+        
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('navbar-scrolled');
+            else navbar.classList.remove('navbar-scrolled');
+        });
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(mobileMenuButton) mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        const projectGrid = document.getElementById('project-grid');
+        function displayProjects(lang) {
+            if(projectGrid) {
+                projectGrid.innerHTML = '';
+                projects[lang].forEach((project, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-card project-card rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group';
+                    card.innerHTML = `
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="p-6 flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-2">${project.title}</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${project.tags.map(tag => `<span class="bg-slate-700 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                            </div>
+                            <div class="flex-grow"></div>
+                            <button data-index="${index}" class="open-modal-button w-full mt-4 bg-accent-color text-gray-900 font-semibold py-2 rounded-lg hover:bg-cyan-300 transition-colors" data-key="modal_button">
+                                ${translations[lang].modal_button}
+                            </button>
+                        </div>
+                    `;
+                    projectGrid.appendChild(card);
+                });
+                addModalEventListeners(lang);
+            }
+        }
+        
+        const projectModal = document.getElementById('projectModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalButton = document.getElementById('closeModal');
+
+        function addModalEventListeners(lang) {
+            const openModalButtons = document.querySelectorAll('.open-modal-button');
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => openModal(button.dataset.index, lang));
+            });
+        }
+
+        function openModal(index, lang) {
+            const project = projects[lang][index];
+            document.getElementById('modalImage').src = project.image;
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalTags').innerHTML = project.tags.map(tag => `<span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('');
+            document.getElementById('modalDescription').innerHTML = project.description;
+            document.getElementById('modalGithubLink').href = project.githubUrl;
+            
+            const liveLink = document.getElementById('modalLiveLink');
+            if (project.liveUrl && project.liveUrl !== '#') {
+                liveLink.href = project.liveUrl;
+                liveLink.style.display = 'flex';
+            } else {
+                liveLink.style.display = 'none';
+            }
+
+            projectModal.classList.remove('hidden');
+            setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.add('scale-95');
+            setTimeout(() => projectModal.classList.add('hidden'), 300);
+        }
+
+        if(closeModalButton) closeModalButton.addEventListener('click', closeModal);
+        if(projectModal) projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) closeModal();
+        });
+
+        const faders = document.querySelectorAll('.fade-in-section');
+        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                if (entry.target.id === 'about') {
+                    const techStack = document.querySelectorAll('#tech-stack-container span');
+                    techStack.forEach(span => {
+                        span.classList.remove('opacity-0', 'translate-y-3');
+                    });
+                }
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => appearOnScroll.observe(fader));
+        
+        // Language Switcher Logic
+        const langToggle = document.getElementById('language-toggle');
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.dataset.key;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            
+            // Update typewriter
+            typewriterTexts = translations[lang].typewriter;
+            textIndex = 0;
+            charIndex = 0;
+            isErasing = false;
+            if (typewriterElement) typewriterElement.textContent = '';
+            
+            displayProjects(lang);
+            displayCerts(lang);
+            localStorage.setItem('language', lang);
+        }
+        
+        langToggle.addEventListener('change', () => {
+            switchLanguage(langToggle.checked ? 'en' : 'es');
+        });
+
+        const savedLang = localStorage.getItem('language') || 'es';
+        langToggle.checked = savedLang === 'en';
+        
+        // Populate Certs
+        const certs1List = document.getElementById('certs1-list');
+        const certs2List = document.getElementById('certs2-list');
+        function displayCerts(lang) {
+            certs1List.innerHTML = '';
+            certs2List.innerHTML = '';
+            certs.forEach(cert => {
+                const desc = lang === 'es' ? cert.desc_es : cert.desc_en;
+                const buttonText = translations[lang].cert_button;
+                const listItem = document.createElement('div');
+                listItem.className = 'border-t border-secondary pt-3';
+                listItem.innerHTML = `
+                    <h4 class="font-semibold text-white">${cert.name}</h4>
+                    <p class="text-sm text-gray-400 my-1">${desc}</p>
+                    <a href="${cert.url}" target="_blank" class="inline-block text-sm font-bold text-accent-color hover:underline">${buttonText} <i class="fas fa-external-link-alt text-xs"></i></a>
+                `;
+                if (cert.category === 1) certs1List.appendChild(listItem);
+                else certs2List.appendChild(listItem);
+            });
+        }
+
+        switchLanguage(savedLang);
+        if(typewriterElement) type();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    });
+    </script>
+</body>
+</html>
