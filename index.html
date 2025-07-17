@@ -189,14 +189,24 @@
                 <a href="#certs" class="text-gray-300 hover:accent-color transition-colors" data-key="nav_certs">Certificaciones</a>
             </div>
             <div class="hidden md:flex items-center space-x-4">
-                <div class="flex items-center space-x-2 text-sm font-semibold">
-                    <span class="text-gray-400">🇨🇴</span>
-                    <label class="lang-switch">
-                        <input type="checkbox" id="language-toggle">
-                        <span class="slider"></span>
-                    </label>
-                    <span class="text-gray-400">🇺🇸</span>
-                </div>
+                <div class="flex items-center space-x-3 text-sm font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rounded-full" viewBox="0 0 512 512">
+                    <path fill="#ffc400" d="M0 128h512v256H0z"/>
+                    <path fill="#c60b1e" d="M0 128h512v64H0zm0 192h512v64H0z"/>
+                </svg>
+                <label class="lang-switch">
+                    <input type="checkbox" id="language-toggle">
+                    <span class="slider"></span>
+                </label>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 60 30">
+                    <clipPath id="a"><path d="M30 15h30v15zv15h-30zH0z"/></clipPath>
+                    <path d="M0 0v30h60V0z" fill="#012169"/>
+                    <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
+                    <path d="M0 0l60 30m0-30L0 30" clip-path="url(#a)" stroke="#C8102E" stroke-width="4"/>
+                    <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+                    <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+                </svg>
+            </div>
                 <a href="CV_GSMB.pdf" target="_blank" class="bg-accent-color text-gray-900 font-bold px-5 py-2 rounded-full hover:bg-cyan-300 transition-transform hover:scale-105" data-key="nav_cv">
                     Descargar CV
                 </a>
