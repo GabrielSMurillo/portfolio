@@ -273,20 +273,26 @@
     <main class="container mx-auto px-6 pt-24">
         <!-- Hero Section -->
         <!-- INICIO DE LA SECCIÓN HERO CORREGIDA -->
-        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24">
+        <!-- INICIO DE LA SECCIÓN HERO CORREGIDA PARA MÓVILES -->
+        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24 px-4"> <!-- Padding horizontal añadido para seguridad -->
             <div class="max-w-4xl z-10">
-                <!-- CAMBIO: Tamaños de imagen responsivos -->
-                <img src="images/profile_photo.JPG" alt="Foto de Gabriel Santiago Murillo" class="w-28 h-28 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
-                <!-- CAMBIO: Tamaños de fuente responsivos -->
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+                
+                <!-- CAMBIO: Tamaños de imagen ajustados para mejor proporción en móvil -->
+                <img src="images/profile_photo.JPG" alt="Foto de Gabriel Santiago Murillo" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
+                
+                <!-- CAMBIO: Tamaños de fuente ajustados para móvil -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
                     Gabriel Santiago Murillo
                 </h1>
+                
                 <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300 font-medium">
                     <span id="typewriter"></span><span class="typewriter-cursor"></span>
                 </p>
+                
                 <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-gray-400" data-key="hero_subtitle">
                     Soy el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.
                 </p>
+                
                 <div class="mt-8 flex justify-center space-x-6">
                     <a href="https://linkedin.com/in/gabriel-santiago-murillo01" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/GabrielSMurillo" target="_blank" aria-label="GitHub" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-github"></i></a>
