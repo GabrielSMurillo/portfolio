@@ -205,19 +205,21 @@
 <body class="antialiased">
 
     <!-- Header / Navbar -->
+    
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#hero-section" aria-label="Inicio">
                 <img src="images/logo.png" alt="Logo de Gabriel Murillo" class="w-32 md:w-40 h-auto">
             </a>
-            <div class="hidden md:flex items-center md:space-x-4 lg:space-x-8">
+            <!-- CAMBIO: de 'md:flex' a 'lg:flex' y se unifican los divs -->
+            <div class="hidden lg:flex items-center space-x-4">
                 <a href="#about" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_about">Sobre Mí</a>
                 <a href="#skills" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_skills">Habilidades</a>
                 <a href="#experience" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_experience">Experiencia</a>
                 <a href="#projects" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_projects">Proyectos</a>
-            </div>
-            <div class="hidden md:flex items-center md:space-x-2 lg:space-x-4">
-                <!-- INICIO DEL NUEVO BLOQUE PARA ESCRITORIO -->
+                
+                <div class="w-px h-6 bg-gray-700 mx-4"></div> <!-- Separador visual -->
+
                 <div class="flex items-center space-x-3 text-sm font-semibold">
                     <!-- Bandera de España -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8 rounded-sm" viewBox="0 0 3 2">
@@ -238,13 +240,16 @@
                         <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
                     </svg>
                 </div>
-                <!-- FIN DEL NUEVO BLOQUE PARA ESCRITORIO -->
                 <a href="#" id="cv-download-link" target="_blank" class="border border-accent-color text-accent-color font-bold px-5 py-2 rounded-full hover:bg-accent-color hover:text-gray-900 transition-all" data-key="nav_cv">Descargar CV</a>
                 <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="bg-accent-color text-gray-900 font-bold px-5 py-2 rounded-full hover:bg-cyan-300 transition-transform hover:scale-105" data-key="nav_contact">Contáctame</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-white"><i class="fas fa-bars text-2xl"></i></button>
+            <!-- CAMBIO: de 'md:hidden' a 'lg:hidden' -->
+            <button id="mobile-menu-button" class="lg:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-secondary">
+        <!-- CAMBIO: de 'md:hidden' a 'lg:hidden' -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary">
             <a href="#about" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_about">Sobre Mí</a>
             <a href="#skills" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_skills">Habilidades</a>
             <a href="#experience" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_experience">Experiencia</a>
@@ -262,31 +267,34 @@
             </div>
         </div>
     </header>
+    <!-- FIN DEL HEADER CORREGIDO -->
 
     <!-- FIX: Added padding-top to main content to avoid overlap with fixed header -->
     <main class="container mx-auto px-6 pt-24">
         <!-- Hero Section -->
-        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24"> <!-- FIX: Negative margin to re-center content vertically -->
+        <!-- INICIO DE LA SECCIÓN HERO CORREGIDA -->
+        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24">
             <div class="max-w-4xl z-10">
-                <!-- FIX: Increased size of profile picture -->
-                <img src="images/profile_photo.JPG" alt="Foto de Gabriel Santiago Murillo" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                <!-- CAMBIO: Tamaños de imagen responsivos -->
+                <img src="images/profile_photo.JPG" alt="Foto de Gabriel Santiago Murillo" class="w-28 h-28 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
+                <!-- CAMBIO: Tamaños de fuente responsivos -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
                     Gabriel Santiago Murillo
                 </h1>
-                <p class="text-xl md:text-2xl mt-4 text-gray-300 font-medium">
+                <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300 font-medium">
                     <span id="typewriter"></span><span class="typewriter-cursor"></span>
                 </p>
-                <p class="mt-6 max-w-2xl mx-auto text-gray-400" data-key="hero_subtitle">
+                <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-gray-400" data-key="hero_subtitle">
                     Soy el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.
                 </p>
                 <div class="mt-8 flex justify-center space-x-6">
-                    <!-- Reemplaza tus enlaces actuales por estos -->
                     <a href="https://linkedin.com/in/gabriel-santiago-murillo01" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/GabrielSMurillo" target="_blank" aria-label="GitHub" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-github"></i></a>
                     <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" aria-label="Email" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </section>
+        <!-- FIN DE LA SECCIÓN HERO CORREGIDA -->
 
         <!-- About Me Section -->
         <section id="about" class="py-24 fade-in-section">
