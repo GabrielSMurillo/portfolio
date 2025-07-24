@@ -463,7 +463,7 @@
 
         const experienceData = {
             es: [
-                { role: 'Docente de Cátedra en Estadística y Análisis de Datos', company: 'Fundación de Educación Superior Nueva América (FESNA)', date: 'Sept 2024 – Presente', details: 'Diseñé e impartí currículos integrales para cursos virtuales en <strong>Python</strong> y <strong>MS Excel</strong> avanzado, enfocados en inteligencia de negocios y análisis de datos.', icon: 'fas fa-chalkboard-teacher' },
+                { role: 'Docente Asociado en Estadística y Análisis de Datos', company: 'Fundación de Educación Superior Nueva América (FESNA)', date: 'Sept 2024 – Presente', details: 'Diseñé e impartí currículos integrales para cursos virtuales en <strong>Python</strong> y <strong>MS Excel</strong> avanzado, enfocados en inteligencia de negocios y análisis de datos.', icon: 'fas fa-chalkboard-teacher' },
                 { role: 'Supervisor Bilingüe', company: 'Teleperformance', date: 'Ene 2023 – Sept 2023', details: 'Analicé y visualicé los KPIs del equipo usando <strong>Tableau</strong> y <strong>MS Excel</strong> para identificar tendencias de rendimiento e informar planes de acción basados en datos.', icon: 'fas fa-users' },
                 { role: 'Agente de Servicio al Cliente Bilingüe', company: 'Teleperformance', date: 'Jun 2022 - Dic 2022', details: 'Brindé soporte de alta calidad para un cliente del sector bancario multinacional, resolviendo consultas complejas en un entorno bilingüe.', icon: 'fas fa-headset' },
                 { role: 'Técnico Contable', company: 'Topografía Pozos Profundos Aguas Subterráneas LTDA', date: 'Sept 2015 - Oct 2016', details: 'Gestioné el ciclo contable completo, asegurando la precisión, integridad y cumplimiento de los registros y transacciones financieras.', icon: 'fas fa-calculator' }
@@ -477,61 +477,78 @@
         };
         
         // --- INICIO DEL BLOQUE DE DATOS DE PROYECTOS ACTUALIZADO ---
-        const projectsData = {
-            es: [
-                { 
-                    title: 'Predicción de Aterrizaje del Falcon 9 (IBM Capstone)', 
-                    image: 'images/spacex.png', 
-                    tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
-                    description: `<p>Proyecto final del <strong>Certificado Profesional en Ciencia de Datos de IBM</strong>, donde lideré un análisis de extremo a extremo para predecir el éxito en los aterrizajes de la primera etapa del cohete Falcon 9.</p><p>El proyecto abarcó todo el ciclo de vida de la ciencia de datos: recolección de datos multi-fuente (APIs, Web Scraping), limpieza de datos (wrangling), análisis exploratorio (EDA) con SQL y visualizaciones, y la construcción de un dashboard interactivo con <strong>Plotly Dash</strong>. Finalmente, se entrenaron y evaluaron múltiples modelos de Machine Learning (Regresión Logística, SVM, Árbol de Decisión) para encontrar el de mejor rendimiento.</p><p>Este proyecto demuestra mi habilidad para manejar datasets complejos de cualquier dominio y aplicar un riguroso proceso analítico, una competencia directamente transferible a los desafíos del sector salud.</p>`, 
-                    githubUrl: `https://github.com/GabrielSMurillo/spacex-IBM-DataScientist-capstone-project/`, 
-                    liveUrl: 'Rocket.pdf'
-                },
-                { 
-                    title: 'Diagnóstico de Patologías Oftálmicas con IA', 
-                    image: 'images/eye.png', 
-                    tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
-                    description: `<p>Desarrollo de un sistema de diagnóstico automatizado basado en Deep Learning para clasificar imágenes de fondo de ojo en cuatro categorías: Normal, Retinopatía Diabética, Catarata y Glaucoma. El objetivo es proveer una herramienta de apoyo para la detección temprana y precisa de patologías oculares.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li>Utilización de una Red Neuronal Convolucional (CNN) con arquitectura <strong>EfficientNetB0</strong> y técnicas de <strong>Transfer Learning</strong> para un alto rendimiento.</li><li>Preprocesamiento avanzado de imágenes para mejorar el contraste y aislar regiones de interés.</li><li>Evaluación del modelo con métricas rigurosas (Accuracy > 75%, AUC > 0.90).</li><li>Implementación de técnicas de IA Explicable (<strong>XAI</strong>) mediante mapas de calor (Saliency Maps) para validar que el modelo se enfoca en características clínicamente relevantes.</li></ul>`, 
-                    githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
-                    liveUrl: 'IAparaMedicos.pdf' 
-                },
-                { 
-                    title: 'Modelo Epidemiológico de la Malaria en Zonas Mineras', 
-                    image: 'images/malaria.png', 
-                    tags: ['Python', 'Modelado Matemático', 'Epidemiología', 'Simulación'], 
-                    description: `<p>Desarrollo de un modelo matemático metapoblacional (basado en Ross-McDonald) para determinar el impacto de la migración, impulsada por la minería ilegal, en la transmisión de la <strong>Malaria</strong> en la costa pacífica colombiana.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Proceso:</h4><ul class='list-disc list-inside space-y-2'><li>Formulación de un modelo de dos parches (urbano y rural/minero).</li><li>Implementación de ecuaciones diferenciales para simular las dinámicas de infección.</li><li>Análisis del impacto de las tasas de migración en la propagación de la enfermedad.</li><li>Validación de que mayores tasas de migración a zonas mineras incrementan proporcionalmente el número de infectados.</li></ul>`, 
-                    githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
-                    liveUrl: 'Malaria_Bajamar (4).pdf'
-                },
-            ],
-            en: [
-                { 
-                    title: 'Falcon 9 Landing Prediction (IBM Capstone)', 
-                    image: 'images/spacex.png',
-                    tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
-                    description: `<p>Final project for the <strong>IBM Data Science Professional Certificate</strong>, where I led an end-to-end analysis to predict the landing success of the Falcon 9 rocket's first stage.</p><p>The project covered the entire data science lifecycle: multi-source data collection (APIs, Web Scraping), data wrangling, exploratory data analysis (EDA) with SQL and visualizations, and building an interactive dashboard with <strong>Plotly Dash</strong>. Finally, multiple Machine Learning models (Logistic Regression, SVM, Decision Tree) were trained and evaluated to find the best performer.</p><p>This project demonstrates my ability to handle complex datasets from any domain and apply a rigorous analytical process, a competence directly transferable to the challenges of the healthcare sector.</p>`, 
-                    githubUrl: 'https://github.com/GabrielSMurillo/spacex-IBM_DataScientist_capstone-project', 
-                    liveUrl: 'Rocket.pdf'
-                },
-                { 
-                    title: 'AI for Ophthalmic Pathology Diagnosis', 
-                    image: 'images/eye.png', 
-                    tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
-                    description: `<p>Development of an automated diagnostic system based on Deep Learning to classify retinal fundus images into four categories: Normal, Diabetic Retinopathy, Cataract, and Glaucoma. The goal is to provide a support tool for the early and accurate detection of eye diseases.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li>Utilization of a Convolutional Neural Network (CNN) with an <strong>EfficientNetB0</strong> architecture and <strong>Transfer Learning</strong> techniques for high performance.</li><li>Advanced image preprocessing to enhance contrast and isolate regions of interest.</li><li>Model evaluation with rigorous metrics (Accuracy > 75%, AUC > 0.90).</li><li>Implementation of Explainable AI (<strong>XAI</strong>) techniques using heatmaps (Saliency Maps) to validate that the model focuses on clinically relevant features.</li></ul>`, 
-                    githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
-                    liveUrl: 'IAparaMedicos.pdf' 
-                },
-                { 
-                    title: 'Epidemiological Modeling of Malaria in Mining Areas', 
-                    image: 'images/malaria.png', 
-                    tags: ['Python', 'Mathematical Modeling', 'Epidemiology', 'Simulation'], 
-                    description: `<p>Developed a metapopulational mathematical model (based on Ross-McDonald) to determine the impact of migration, driven by illegal mining, on <strong>Malaria</strong> transmission on the Colombian Pacific coast.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Process:</h4><ul class='list-disc list-inside space-y-2'><li>Formulation of a two-patch model (urban and rural/mining).</li><li>Implementation of differential equations to simulate infection dynamics.</li><li>Analysis of the impact of migration rates on disease spread.</li><li>Validation that higher migration rates to mining areas proportionally increase the number of infected individuals.</li></ul>`, 
-                    githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
-                    liveUrl: 'Malaria_Bajamar (4).pdf'
-                }
-            ]
-        };
-        // --- FIN DEL BLOQUE DE DATOS DE PROYECTOS ---
+// --- INICIO DEL BLOQUE DE DATOS DE PROYECTOS ACTUALIZADO ---
+      const projectsData = {
+          es: [
+              { 
+                  title: 'Clasificador de Sonidos Respiratorios con MLOps', 
+                  image: 'images/lungs.png', 
+                  tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
+                  description: `<p>Proyecto de IA de extremo a extremo para clasificar 8 patologías respiratorias desde audio pulmonar, culminando en un servicio desplegable. Este proyecto demuestra el ciclo de vida completo de un producto de Machine Learning.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Modelado Iterativo:</strong> Se compararon sistemáticamente 3 arquitecturas (Random Forest, 1D-CNN, 2D-CNN) para seleccionar el modelo óptimo.</li><li><strong>Modelo de Vanguardia:</strong> El modelo final utiliza una arquitectura <strong>EfficientNet-B0</strong> con <strong>Transfer Learning</strong> sobre Mel-espectrogramas, alcanzando un F1-score de <strong>0.91</strong> y mejorando drásticamente el recall en clases minoritarias.</li><li><strong>Resolución de Overfitting:</strong> Se diagnosticó y mitigó exitosamente el sobreajuste en modelos intermedios mediante técnicas de regularización como Data Augmentation y Early Stopping.</li><li><strong>MLOps y Despliegue:</strong> El modelo ganador fue encapsulado en una API RESTful con <strong>FastAPI</strong> y contenerizado con <strong>Docker</strong>, creando un artefacto de software reproducible y listo para producción.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/proyecto-cero-epoc`, 
+                  liveUrl: 'proyect_zero_copd.pdf'
+              },
+              { 
+                  title: 'Predicción de Aterrizaje del Falcon 9 (IBM Capstone)', 
+                  image: 'images/spacex.png', 
+                  tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
+                  description: `<p>Proyecto final del <strong>Certificado Profesional en Ciencia de Datos de IBM</strong>, donde lideré un análisis de extremo a extremo para predecir el éxito en los aterrizajes de la primera etapa del cohete Falcon 9.</p><p>El proyecto abarcó todo el ciclo de vida de la ciencia de datos: recolección de datos multi-fuente (APIs, Web Scraping), limpieza de datos (wrangling), análisis exploratorio (EDA) con SQL y visualizaciones, y la construcción de un dashboard interactivo con <strong>Plotly Dash</strong>. Finalmente, se entrenaron y evaluaron múltiples modelos de Machine Learning (Regresión Logística, SVM, Árbol de Decisión) para encontrar el de mejor rendimiento.</p><p>Este proyecto demuestra mi habilidad para manejar datasets complejos de cualquier dominio y aplicar un riguroso proceso analítico, una competencia directamente transferible a los desafíos del sector salud.</p>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/spacex-IBM-DataScientist-capstone-project/`, 
+                  liveUrl: 'Rocket.pdf'
+              },
+              { 
+                  title: 'Diagnóstico de Patologías Oftálmicas con IA', 
+                  image: 'images/eye.png', 
+                  tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
+                  description: `<p>Desarrollo de un sistema de diagnóstico automatizado basado en Deep Learning para clasificar imágenes de fondo de ojo en cuatro categorías: Normal, Retinopatía Diabética, Catarata y Glaucoma. El objetivo es proveer una herramienta de apoyo para la detección temprana y precisa de patologías oculares.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li>Utilización de una Red Neuronal Convolucional (CNN) con arquitectura <strong>EfficientNetB0</strong> y técnicas de <strong>Transfer Learning</strong> para un alto rendimiento.</li><li>Preprocesamiento avanzado de imágenes para mejorar el contraste y aislar regiones de interés.</li><li>Evaluación del modelo con métricas rigurosas (Accuracy > 75%, AUC > 0.90).</li><li>Implementación de técnicas de IA Explicable (<strong>XAI</strong>) mediante mapas de calor (Saliency Maps) para validar que el modelo se enfoca en características clínicamente relevantes.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
+                  liveUrl: 'IAparaMedicos.pdf' 
+              },
+              { 
+                  title: 'Modelo Epidemiológico de la Malaria en Zonas Mineras', 
+                  image: 'images/malaria.png', 
+                  tags: ['Python', 'Modelado Matemático', 'Epidemiología', 'Simulación'], 
+                  description: `<p>Desarrollo de un modelo matemático metapoblacional (basado en Ross-McDonald) para determinar el impacto de la migración, impulsada por la minería ilegal, en la transmisión de la <strong>Malaria</strong> en la costa pacífica colombiana.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Proceso:</h4><ul class='list-disc list-inside space-y-2'><li>Formulación de un modelo de dos parches (urbano y rural/minero).</li><li>Implementación de ecuaciones diferenciales para simular las dinámicas de infección.</li><li>Análisis del impacto de las tasas de migración en la propagación de la enfermedad.</li><li>Validación de que mayores tasas de migración a zonas mineras incrementan proporcionalmente el número de infectados.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
+                  liveUrl: 'Malaria_Bajamar (4).pdf'
+              },
+          ],
+          en: [
+              { 
+                  title: 'Respiratory Sound Classifier with MLOps', 
+                  image: 'images/lungs.png', 
+                  tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
+                  description: `<p>End-to-end AI project to classify 8 respiratory pathologies from lung audio, culminating in a deployable service. This project demonstrates the complete lifecycle of a Machine Learning product.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Iterative Modeling:</strong> Systematically compared 3 architectures (Random Forest, 1D-CNN, 2D-CNN) to select the optimal model.</li><li><strong>State-of-the-Art Model:</strong> The final model uses an <strong>EfficientNet-B0</strong> architecture with <strong>Transfer Learning</strong> on Mel-spectrograms, achieving an F1-score of <strong>0.91</strong> and drastically improving recall on minority classes.</li><li><strong>Overfitting Resolution:</strong> Successfully diagnosed and mitigated overfitting in intermediate models using regularization techniques like Data Augmentation and Early Stopping.</li><li><strong>MLOps & Deployment:</strong> The winning model was encapsulated in a RESTful API with <strong>FastAPI</strong> and containerized with <strong>Docker</strong>, creating a reproducible, production-ready software artifact.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/proyecto-cero-epoc`, 
+                  liveUrl: 'proyect_zero_copd.pdf'
+              },
+              { 
+                  title: 'Falcon 9 Landing Prediction (IBM Capstone)', 
+                  image: 'images/spacex.png',
+                  tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
+                  description: `<p>Final project for the <strong>IBM Data Science Professional Certificate</strong>, where I led an end-to-end analysis to predict the landing success of the Falcon 9 rocket's first stage.</p><p>The project covered the entire data science lifecycle: multi-source data collection (APIs, Web Scraping), data wrangling, exploratory data analysis (EDA) with SQL and visualizations, and building an interactive dashboard with <strong>Plotly Dash</strong>. Finally, multiple Machine Learning models (Logistic Regression, SVM, Decision Tree) were trained and evaluated to find the best performer.</p><p>This project demonstrates my ability to handle complex datasets from any domain and apply a rigorous analytical process, a competence directly transferable to the challenges of the healthcare sector.</p>`, 
+                  githubUrl: 'https://github.com/GabrielSMurillo/spacex-IBM_DataScientist_capstone-project', 
+                  liveUrl: 'Rocket.pdf'
+              },
+              { 
+                  title: 'AI for Ophthalmic Pathology Diagnosis', 
+                  image: 'images/eye.png', 
+                  tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
+                  description: `<p>Development of an automated diagnostic system based on Deep Learning to classify retinal fundus images into four categories: Normal, Diabetic Retinopathy, Cataract, and Glaucoma. The goal is to provide a support tool for the early and accurate detection of eye diseases.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li>Utilization of a Convolutional Neural Network (CNN) with an <strong>EfficientNetB0</strong> architecture and <strong>Transfer Learning</strong> techniques for high performance.</li><li>Advanced image preprocessing to enhance contrast and isolate regions of interest.</li><li>Model evaluation with rigorous metrics (Accuracy > 75%, AUC > 0.90).</li><li>Implementation of Explainable AI (<strong>XAI</strong>) techniques using heatmaps (Saliency Maps) to validate that the model focuses on clinically relevant features.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
+                  liveUrl: 'IAparaMedicos.pdf' 
+              },
+              { 
+                  title: 'Epidemiological Modeling of Malaria in Mining Areas', 
+                  image: 'images/malaria.png', 
+                  tags: ['Python', 'Mathematical Modeling', 'Epidemiology', 'Simulation'], 
+                  description: `<p>Developed a metapopulational mathematical model (based on Ross-McDonald) to determine the impact of migration, driven by illegal mining, on <strong>Malaria</strong> transmission on the Colombian Pacific coast.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Process:</h4><ul class='list-disc list-inside space-y-2'><li>Formulation of a two-patch model (urban and rural/mining).</li><li>Implementation of differential equations to simulate infection dynamics.</li><li>Analysis of the impact of migration rates on disease spread.</li><li>Validation that higher migration rates to mining areas proportionally increase the number of infected individuals.</li></ul>`, 
+                  githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
+                  liveUrl: 'Malaria_Bajamar (4).pdf'
+              }
+          ]
+      };
+      // --- FIN DEL BLOQUE DE DATOS DE PROYECTOS ---
         const educationData = {
             es: [
                 { degree: 'Ingeniero Biomédico', institution: 'Universidad de los Andes', date: '2017 - 2022' },
