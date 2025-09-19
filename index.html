@@ -1,427 +1,1042 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-    
-    
-    <!-- Chosen Palette: User's Deep Navy & Cyan -->
-    <!-- Application Structure Plan: This final version merges the user's sophisticated dark-theme design with a refined information architecture. The structure remains a single-page application with a sticky top navigation for easy access to key sections: 'About', 'Skills', 'Experience', 'Projects', and 'Education/Certs'. The key enhancement is the new 'Skills' section, which now features the requested interactive radar chart. This chart provides a high-impact, at-a-glance summary of Gabriel's core competencies, a significant improvement over a static list. The project section uses a modal pop-up for detailed views, and the experience section uses an interactive timeline, both preserving the clean UI while offering depth. This hybrid structure was chosen to be visually stunning (per user's design) and informationally effective (per strategic content improvements). -->
-    <!-- Visualization & Content Choices: 
-        - Profile Summary (About): Goal=Narrate Story. Method=Refined text block. Justification=Creates a powerful, personal narrative about his unique career path.
-        - Skills: Goal=Quantify & Compare. Method=Interactive Radar Chart (Chart.js). Interaction=Hover tooltips. Justification=Directly implements the user's request for a "cool diagram", offering a more engaging and memorable way to showcase skills than a simple list.
-        - Experience: Goal=Show Career Path. Method=Interactive vertical timeline with expand/collapse details (HTML/CSS/JS). Interaction=Click to reveal more. Justification=Maintains the user's elegant timeline design while adding interactivity to manage information density.
-        - Projects: Goal=Showcase Portfolio. Method=Card grid with a modal for details (HTML/CSS/JS). Interaction=Click to open modal. Justification=A proven, user-friendly pattern for presenting portfolio items.
-        - Education/Certs: Goal=Validate Credentials. Method=Clean, structured lists. Justification=Clear, scannable presentation of qualifications.
+    <!-- =================================================================== -->
+    <!-- PORTAFOLIO WEB - GABRIEL SANTIAGO MURILLO                           -->
+    <!-- =================================================================== -->
+    <!-- 
+    ARQUITECTURA DEL PROYECTO:
+    - SPA (Single Page Application) con navegación fluida
+    - Design System basado en Deep Navy (#0A101F) y Cyan (#22D3EE)
+    - Responsive-first approach con Tailwind CSS
+    - Componentes interactivos: Radar Chart (Skills), Timeline (Experience), Modal (Projects)
+    - Soporte bilingüe (ES/EN) con persistencia en localStorage
+    - Optimización SEO y rendimiento web
     -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Meta Tags Básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Título Principal -->
     <title>Gabriel S. Murillo | Ingeniero Biomédico y Científico de Datos</title>
-    <!-- INICIO DEL BLOQUE DE FAVICON CORREGIDO -->
-    <link rel="icon" type="image/png" href="my-favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="my-favicon/favicon.svg" />
-    <link rel="shortcut icon" href="my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="my-favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Gabriel S. Murillo" /> <!-- Consejo: Cambia "MyWebSite" por tu nombre -->
-    <link rel="manifest" href="my-favicon/site.webmanifest" />
-    <!-- FIN DEL BLOQUE DE FAVICON CORREGIDO -->
-     <!-- Google tag (gtag.js) -->
+    <!-- =================================================================== -->
+    <!-- FAVICON CONFIGURATION                                               -->
+    <!-- =================================================================== -->
+    <!-- Favicon moderno con soporte cross-platform -->
+    <link rel="icon" type="image/png" href="my-favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="my-favicon/favicon.svg">
+    <link rel="shortcut icon" href="my-favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="my-favicon/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Gabriel S. Murillo">
+    <link rel="manifest" href="my-favicon/site.webmanifest">
+
+    <!-- =================================================================== -->
+    <!-- ANALYTICS & VERIFICATION                                            -->
+    <!-- =================================================================== -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CS15SJ4P"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-04CS15SJ4P');
+        // Google Analytics Configuration
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-04CS15SJ4P');
     </script>
-    <meta name="google-site-verification" content="H9nHrJlTrFEp-CyiUvd-neA1DuNYn5qYZCV58zT_D74" />
     
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="H9nHrJlTrFEp-CyiUvd-neA1DuNYn5qYZCV58zT_D74">
     
-    <!-- SEO & Social Media Meta Tags -->
-    <meta name="description" content="Portafolio de Gabriel Santiago Murillo, un Ingeniero Biomédico y Científico de Datos que une la medicina, la ingeniería y la IA para resolver problemas críticos en el sector salud.">
-    <meta name="keywords" content="Gabriel Murillo, Ingeniero Biomédico, Científico de Datos, IA, Salud, Python, Bogotá, Machine Learning, TensorFlow, Scikit-learn">
-    <meta property="og:title" content="Gabriel S. Murillo | Portafolio Profesional">
-    <meta property="og:description" content="Explora el portafolio de un profesional que une la medicina, la ingeniería y la inteligencia artificial para crear soluciones de impacto.">
-    <meta property="og:image" content="https://i.imgur.com/your-preview-image.jpg">
-    <meta property="og:url" content="https://gabrielsmurillo.github.io/your-repo-name/">
+    <!-- =================================================================== -->
+    <!-- SEO & SOCIAL MEDIA META TAGS                                        -->
+    <!-- =================================================================== -->
+    <!-- Meta tags optimizados para SEO y redes sociales -->
+    <meta name="description" content="Gabriel Santiago Murillo - Ingeniero Biomédico y Científico de Datos especializado en IA aplicada al sector salud. Desarrollo soluciones innovadoras que unen medicina, ingeniería y tecnología.">
+    <meta name="keywords" content="Gabriel Murillo, Ingeniero Biomédico, Científico de Datos, IA Salud, Machine Learning Médico, Python, TensorFlow, Deep Learning, Computer Vision Médica, Bogotá Colombia">
+    <meta name="author" content="Gabriel Santiago Murillo">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A101F">
+    
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Gabriel S. Murillo | Ingeniero Biomédico y Científico de Datos">
+    <meta property="og:description" content="Especialista en IA aplicada al sector salud. Desarrollo soluciones que unen medicina, ingeniería y ciencia de datos.">
+    <meta property="og:image" content="https://gabrielsmurillo.github.io/images/og-preview.jpg">
+    <meta property="og:url" content="https://gabrielsmurillo.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gabriel S. Murillo | Portfolio Profesional">
+    <meta name="twitter:description" content="Ingeniero Biomédico y Científico de Datos especializado en IA para el sector salud">
+    <meta name="twitter:image" content="https://gabrielsmurillo.github.io/images/twitter-preview.jpg">
 
-    <!-- Scripts and Fonts -->
+    <!-- =================================================================== -->
+    <!-- STRUCTURED DATA (JSON-LD)                                           -->
+    <!-- =================================================================== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Gabriel Santiago Murillo",
+        "jobTitle": ["Ingeniero Biomédico", "Científico de Datos", "Especialista en IA"],
+        "description": "Ingeniero Biomédico y Científico de Datos especializado en aplicar IA y ciencia de datos para resolver problemas críticos en el sector salud",
+        "url": "https://gabrielsmurillo.github.io",
+        "image": "https://gabrielsmurillo.github.io/images/profile_photo.JPG",
+        "sameAs": [
+            "https://www.linkedin.com/in/gabriel-santiago-murillo01",
+            "https://github.com/GabrielSMurillo"
+        ],
+        "email": "santiagomurillob@gmail.com",
+        "nationality": "Colombian",
+        "alumniOf": [
+            {
+                "@type": "EducationalOrganization",
+                "name": "Universidad de los Andes",
+                "url": "https://uniandes.edu.co"
+            },
+            {
+                "@type": "EducationalOrganization", 
+                "name": "Universidad Nacional de Colombia",
+                "url": "https://unal.edu.co"
+            }
+        ],
+        "knowsAbout": [
+            "Machine Learning",
+            "Deep Learning", 
+            "Computer Vision",
+            "Data Science",
+            "Python Programming",
+            "Biomedical Engineering",
+            "Healthcare AI",
+            "Medical Data Analysis"
+        ],
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "IBM Data Science Professional Certificate",
+                "credentialCategory": "Professional Certification"
+            },
+            {
+                "@type": "EducationalOccupationalCredential", 
+                "name": "Neural Networks and Deep Learning (DeepLearning.AI)",
+                "credentialCategory": "Online Course"
+            }
+        ]
+    }
+    </script>
+
+    <!-- =================================================================== -->
+    <!-- EXTERNAL RESOURCES                                                  -->
+    <!-- =================================================================== -->
+    <!-- CSS Framework y librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chart.js para el radar de habilidades -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    
+    <!-- Fuentes web optimizadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- =================================================================== -->
+    <!-- CUSTOM STYLES                                                       -->
+    <!-- =================================================================== -->
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A101F;
-            color: #E5E7EB;
+        /* =================================================================== */
+        /* CSS CUSTOM PROPERTIES (Variables)                                   */
+        /* =================================================================== */
+        :root {
+            /* Paleta de colores principal */
+            --color-primary-dark: #0A101F;
+            --color-secondary-dark: #1E293B;
+            --color-accent: #22D3EE;
+            --color-accent-hover: #06B6D4;
+            --color-accent-light: rgba(34, 211, 238, 0.1);
+            
+            /* Grises */
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #E5E7EB;
+            --color-text-muted: #9CA3AF;
+            --color-text-placeholder: #6B7280;
+            
+            /* Bordes */
+            --color-border: #334155;
+            --color-border-light: rgba(51, 65, 85, 0.3);
+            
+            /* Fondos */
+            --bg-glass: rgba(30, 41, 59, 0.5);
+            --bg-navbar: rgba(10, 16, 31, 0.7);
+            
+            /* Tipografía */
+            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+            
+            /* Espaciado */
+            --spacing-section: 6rem;
+            --spacing-section-mobile: 4rem;
+            
+            /* Transiciones */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Sombras */
+            --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.3);
+            
+            /* Z-index */
+            --z-navbar: 50;
+            --z-modal: 1000;
         }
-        .accent-color { color: #22D3EE; }
-        .bg-accent-color { background-color: #22D3EE; }
-        .bg-secondary { background-color: #1E293B; }
-        .border-secondary { border-color: #334155; }
+
+        /* =================================================================== */
+        /* BASE STYLES                                                         */
+        /* =================================================================== */
+        * {
+            box-sizing: border-box;
+        }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family-primary);
+            font-weight: var(--font-weight-normal);
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* =================================================================== */
+        /* UTILITY CLASSES                                                     */
+        /* =================================================================== */
+        .accent-color { 
+            color: var(--color-accent); 
+        }
+        
+        .bg-accent-color { 
+            background-color: var(--color-accent); 
+        }
+        
+        .bg-secondary { 
+            background-color: var(--color-secondary-dark); 
+        }
+        
+        .border-secondary { 
+            border-color: var(--color-border); 
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-accent), #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =================================================================== */
+        /* GLASS MORPHISM EFFECTS                                              */
+        /* =================================================================== */
         .glass-card {
-            background: rgba(30, 41, 59, 0.5);
+            background: var(--bg-glass);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.3);
+            border: 1px solid var(--color-border-light);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-card);
+            transition: box-shadow var(--transition-normal), transform var(--transition-normal);
         }
+        
+        .glass-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* =================================================================== */
+        /* NAVIGATION STYLES                                                   */
+        /* =================================================================== */
         .navbar-scrolled {
-            background-color: rgba(10, 16, 31, 0.7);
+            background-color: var(--bg-navbar);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid #1E293B;
+            border-bottom: 1px solid var(--color-secondary-dark);
+            transition: all var(--transition-normal);
         }
+        
+        .nav-link {
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-normal);
+        }
+        
+        .nav-link:hover::after,
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        .active-nav {
+            color: var(--color-accent);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* =================================================================== */
+        /* HERO SECTION ANIMATIONS                                             */
+        /* =================================================================== */
+        #hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--color-accent-light), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1), transparent 40%);
+            animation: gradient-animation 20s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradient-animation {
+            0%, 100% { 
+                background-position: 0% 50%; 
+                opacity: 0.8;
+            }
+            50% { 
+                background-position: 100% 50%; 
+                opacity: 1;
+            }
+        }
+        
         .typewriter-cursor {
             display: inline-block;
-            width: 8px;
+            width: 3px;
             height: 1.5em;
-            background-color: #22D3EE;
-            animation: blink 0.7s infinite;
+            background-color: var(--color-accent);
+            animation: cursor-blink 1s infinite;
             vertical-align: middle;
+            margin-left: 2px;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
+        
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
+
+        /* =================================================================== */
+        /* ANIMATION SYSTEM                                                    */
+        /* =================================================================== */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(40px);
+            transition: 
+                opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+        
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        #hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.1), transparent 30%),
-                        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1), transparent 30%);
-            animation: move-gradient 20s linear infinite;
-            z-index: -1;
+        
+        .stagger-animation {
+            animation-delay: calc(var(--animation-order, 0) * 0.1s);
         }
-        @keyframes move-gradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .active-nav {
-            color: #22D3EE;
-            font-weight: 600;
-        }
+
+        /* =================================================================== */
+        /* SKILLS CHART STYLES                                                */
+        /* =================================================================== */
         .chart-container {
             position: relative;
             width: 100%;
             max-width: 600px;
-            margin: auto;
+            margin: 0 auto;
             height: 400px;
+            padding: 1rem;
         }
+        
         @media (max-width: 768px) {
-            .chart-container { height: 350px; }
+            .chart-container { 
+                height: 350px; 
+                padding: 0.5rem;
+            }
         }
+
+        /* =================================================================== */
+        /* LANGUAGE TOGGLE COMPONENT                                           */
+        /* =================================================================== */
         .lang-switch {
             position: relative;
             display: inline-block;
-            width: 50px;
-            height: 26px;
+            width: 52px;
+            height: 28px;
         }
+        
         .lang-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
+        
         .slider {
             position: absolute;
             cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #334155;
-            transition: .4s;
-            border-radius: 26px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-border);
+            transition: background-color var(--transition-normal);
+            border-radius: 28px;
         }
+        
         .slider:before {
             position: absolute;
             content: "";
-            height: 18px;
-            width: 18px;
+            height: 20px;
+            width: 20px;
             left: 4px;
             bottom: 4px;
             background-color: white;
-            transition: .4s;
+            transition: transform var(--transition-normal);
             border-radius: 50%;
         }
-        input:checked + .slider { background-color: #22D3EE; }
-        input:checked + .slider:before { transform: translateX(24px); }
-        /* --- ESTILOS PARA LA LÍNEA DE TIEMPO (TIMELINE) --- */
+        
+        input:checked + .slider {
+            background-color: var(--color-accent);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        .slider:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+        /* =================================================================== */
+        /* TIMELINE STYLES                                                     */
+        /* =================================================================== */
         .timeline-item {
             position: relative;
-            padding-left: 60px; /* Aumentamos el espacio para el ícono */
-            padding-bottom: 40px;
-            transition: transform 0.3s ease;
+            padding-left: 4rem;
+            padding-bottom: 2.5rem;
+            transition: transform var(--transition-normal);
         }
+        
         .timeline-item:hover {
-            transform: translateX(5px);
+            transform: translateX(8px);
         }
+        
         .timeline-item:last-child {
             padding-bottom: 0;
         }
+        
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 15px; /* Centra la línea con el ícono */
-            top: 5px;
-            bottom: -20px; /* Ajuste para que la línea conecte bien */
+            left: 1rem;
+            top: 0.25rem;
+            bottom: -1.25rem;
             width: 2px;
-            background-color: #334155; /* border-secondary */
+            background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
         }
+        
         .timeline-item:last-child::before {
             display: none;
         }
+        
         .timeline-icon {
             position: absolute;
             left: 0;
             top: 0;
-            width: 32px;
-            height: 32px;
+            width: 2rem;
+            height: 2rem;
             border-radius: 50%;
-            background-color: #1E293B; /* bg-secondary */
-            border: 2px solid #334155; /* border-secondary */
+            background-color: var(--color-secondary-dark);
+            border: 2px solid var(--color-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #22D3EE; /* accent-color */
-            transition: all 0.3s ease;
+            color: var(--color-accent);
+            font-size: 0.875rem;
+            transition: all var(--transition-normal);
+            z-index: 1;
         }
+        
         .timeline-item:hover .timeline-icon {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px #22D3EE;
-            color: white;
+            transform: scale(1.15);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+            background-color: var(--color-accent);
+            color: var(--color-primary-dark);
+        }
+
+        /* =================================================================== */
+        /* PROJECT CARDS                                                       */
+        /* =================================================================== */
+        .project-card {
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .project-card .project-image {
+            transition: transform var(--transition-slow);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        /* =================================================================== */
+        /* MODAL STYLES                                                        */
+        /* =================================================================== */
+        .modal-backdrop {
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent) var(--color-secondary-dark);
+        }
+        
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--color-secondary-dark);
+            border-radius: 3px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 3px;
+        }
+
+        /* =================================================================== */
+        /* BUTTON STYLES                                                       */
+        /* =================================================================== */
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-primary-dark);
+            font-weight: var(--font-weight-bold);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            transition: all var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 211, 238, 0.3);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--color-accent);
+            color: var(--color-accent);
+            font-weight: var(--font-weight-bold);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            transition: all var(--transition-normal);
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--color-accent);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* =================================================================== */
+        /* RESPONSIVE DESIGN                                                   */
+        /* =================================================================== */
+        @media (max-width: 1024px) {
+            :root {
+                --spacing-section: 4rem;
+            }
+            
+            .timeline-item {
+                padding-left: 3rem;
+            }
+            
+            .timeline-icon {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --spacing-section: 3rem;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+            
+            .timeline-item {
+                padding-left: 2.5rem;
+            }
+            
+            .timeline-item::before {
+                left: 0.75rem;
+            }
+            
+            .timeline-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.625rem;
+            }
+            
+            .modal-content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        /* =================================================================== */
+        /* ACCESSIBILITY IMPROVEMENTS                                          */
+        /* =================================================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .fade-in-section {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus styles */
+        .focus-ring:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
         }
     </style>
 </head>
-<body class="antialiased">
+<<body class="antialiased">
+    <!-- =================================================================== -->
+    <!-- SKIP TO CONTENT LINK (Accessibility)                               -->
+    <!-- =================================================================== -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent-color text-primary-dark px-4 py-2 rounded z-50">
+        Saltar al contenido principal
+    </a>
 
-    <!-- Header / Navbar -->
-    
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#hero-section" aria-label="Inicio">
-                <img src="images/logo.png" alt="Logo de Gabriel Murillo" class="w-32 md:w-40 h-auto">
+    <!-- =================================================================== -->
+    <!-- NAVIGATION HEADER                                                   -->
+    <!-- =================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="banner">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center" role="navigation" aria-label="Navegación principal">
+            <!-- Logo -->
+            <a href="#hero-section" class="focus-ring" aria-label="Ir al inicio">
+                <img src="images/logo.png" alt="Logo de Gabriel Santiago Murillo" class="w-32 md:w-40 h-auto" width="160" height="auto">
             </a>
-            <!-- CAMBIO: de 'md:flex' a 'lg:flex' y se unifican los divs -->
+            
+            <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-4">
-                <a href="#about" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_about">Sobre Mí</a>
-                <a href="#skills" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_skills">Habilidades</a>
-                <a href="#experience" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_experience">Experiencia</a>
-                <a href="#projects" class="nav-link text-gray-300 hover:accent-color transition-colors" data-key="nav_projects">Proyectos</a>
+                <ul class="flex items-center space-x-6" role="menubar">
+                    <li role="none"><a href="#about" class="nav-link text-gray-300 hover:accent-color transition-colors focus-ring" role="menuitem" data-key="nav_about">Sobre Mí</a></li>
+                    <li role="none"><a href="#skills" class="nav-link text-gray-300 hover:accent-color transition-colors focus-ring" role="menuitem" data-key="nav_skills">Habilidades</a></li>
+                    <li role="none"><a href="#experience" class="nav-link text-gray-300 hover:accent-color transition-colors focus-ring" role="menuitem" data-key="nav_experience">Experiencia</a></li>
+                    <li role="none"><a href="#projects" class="nav-link text-gray-300 hover:accent-color transition-colors focus-ring" role="menuitem" data-key="nav_projects">Proyectos</a></li>
+                </ul>
                 
-                <div class="w-px h-6 bg-gray-700 mx-4"></div> <!-- Separador visual -->
-
-                <div class="flex items-center space-x-3 text-sm font-semibold">
-                    <!-- Bandera de España -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8 rounded-sm" viewBox="0 0 3 2">
-                        <path fill="#c60b1e" d="M0 0h3v2H0z"/>
-                        <path fill="#ffc400" d="M0 .5h3v1H0z"/>
-                    </svg>
-                    <label class="lang-switch">
-                        <input type="checkbox" id="language-toggle-desktop">
+                <!-- Separator -->
+                <div class="w-px h-6 bg-gray-700 mx-4" aria-hidden="true"></div>
+                
+                <!-- Language Selector -->
+                <div class="flex items-center space-x-3 text-sm font-semibold" role="group" aria-label="Selector de idioma">
+                    <span class="flag-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8 rounded-sm" viewBox="0 0 3 2" aria-label="Bandera de España">
+                            <path fill="#c60b1e" d="M0 0h3v2H0z"/>
+                            <path fill="#ffc400" d="M0 .5h3v1H0z"/>
+                        </svg>
+                    </span>
+                    <label class="lang-switch" for="language-toggle-desktop">
+                        <input type="checkbox" id="language-toggle-desktop" aria-label="Cambiar idioma">
                         <span class="slider"></span>
                     </label>
-                    <!-- Bandera del Reino Unido -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8 rounded-sm" viewBox="0 0 60 30">
-                        <clipPath id="a"><path d="M30 15h30v15zv15h-30zH0z"/></clipPath>
-                        <path d="M0 0v30h60V0z" fill="#012169"/>
-                        <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
-                        <path d="M0 0l60 30m0-30L0 30" clip-path="url(#a)" stroke="#C8102E" stroke-width="4"/>
-                        <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
-                        <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
-                    </svg>
+                    <span class="flag-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-8 rounded-sm" viewBox="0 0 60 30" aria-label="Bandera del Reino Unido">
+                            <clipPath id="flag-clip"><path d="M30 15h30v15zv15h-30zH0z"/></clipPath>
+                            <path d="M0 0v30h60V0z" fill="#012169"/>
+                            <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
+                            <path d="M0 0l60 30m0-30L0 30" clip-path="url(#flag-clip)" stroke="#C8102E" stroke-width="4"/>
+                            <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+                            <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+                        </svg>
+                    </span>
                 </div>
-                <a href="#" id="cv-download-link" target="_blank" class="border border-accent-color text-accent-color font-bold px-5 py-2 rounded-full hover:bg-accent-color hover:text-gray-900 transition-all" data-key="nav_cv">Descargar CV</a>
-                <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="bg-accent-color text-gray-900 font-bold px-5 py-2 rounded-full hover:bg-cyan-300 transition-transform hover:scale-105" data-key="nav_contact">Contáctame</a>
+                
+                <!-- CTA Buttons -->
+                <a href="#" id="cv-download-link" target="_blank" class="btn-secondary focus-ring" data-key="nav_cv" aria-describedby="cv-description">
+                    Descargar CV
+                </a>
+                <span id="cv-description" class="sr-only">Descargar curriculum vitae en formato PDF</span>
+                
+                <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="btn-primary focus-ring" data-key="nav_contact">
+                    Contáctame
+                </a>
             </div>
-            <!-- CAMBIO: de 'md:hidden' a 'lg:hidden' -->
-            <button id="mobile-menu-button" class="lg:hidden text-white">
-                <i class="fas fa-bars text-2xl"></i>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white focus-ring" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
             </button>
         </nav>
-        <!-- CAMBIO: de 'md:hidden' a 'lg:hidden' -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-secondary">
-            <a href="#about" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_about">Sobre Mí</a>
-            <a href="#skills" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_skills">Habilidades</a>
-            <a href="#experience" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_experience">Experiencia</a>
-            <a href="#projects" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_projects">Proyectos</a>
-            <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_contact">Contáctame</a>
-            <a href="#" id="cv-download-link-mobile" target="_blank" class="block py-3 px-4 text-sm hover:bg-slate-700" data-key="nav_cv">Descargar CV</a>
-            <div class="border-t border-secondary my-2"></div>
-            <div class="flex items-center justify-center space-x-4 p-4">
-                <span class="font-medium text-sm" data-key="lang_es">ES</span>
-                <label class="lang-switch">
-                    <input type="checkbox" id="language-toggle-mobile">
-                    <span class="slider"></span>
-                </label>
-                <span class="font-medium text-sm" data-key="lang_en">EN</span>
-            </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-secondary" role="menu" aria-labelledby="mobile-menu-button">
+            <nav class="flex flex-col" role="navigation">
+                <a href="#about" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_about">Sobre Mí</a>
+                <a href="#skills" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_skills">Habilidades</a>
+                <a href="#experience" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_experience">Experiencia</a>
+                <a href="#projects" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_projects">Proyectos</a>
+                <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_contact">Contáctame</a>
+                <a href="#" id="cv-download-link-mobile" target="_blank" class="block py-3 px-4 text-sm hover:bg-slate-700 focus-ring" role="menuitem" data-key="nav_cv">Descargar CV</a>
+                
+                <div class="border-t border-secondary my-2" aria-hidden="true"></div>
+                
+                <div class="flex items-center justify-center space-x-4 p-4" role="group" aria-label="Selector de idioma">
+                    <span class="font-medium text-sm" data-key="lang_es">ES</span>
+                    <label class="lang-switch" for="language-toggle-mobile">
+                        <input type="checkbox" id="language-toggle-mobile" aria-label="Cambiar idioma">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="font-medium text-sm" data-key="lang_en">EN</span>
+                </div>
+            </nav>
         </div>
     </header>
-    <!-- FIN DEL HEADER CORREGIDO -->
 
-    <!-- FIX: Added padding-top to main content to avoid overlap with fixed header -->
-    <main class="container mx-auto px-6 pt-24">
-        <!-- Hero Section -->
-        <!-- INICIO DE LA SECCIÓN HERO CORREGIDA -->
-        <!-- INICIO DE LA SECCIÓN HERO CORREGIDA PARA MÓVILES -->
-        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24 px-4"> <!-- Padding horizontal añadido para seguridad -->
+    <!-- =================================================================== -->
+    <!-- MAIN CONTENT                                                        -->
+    <!-- =================================================================== -->
+    <main id="main-content" class="container mx-auto px-6 pt-24" role="main">
+        
+        <!-- =================================================================== -->
+        <!-- HERO SECTION                                                        -->
+        <!-- =================================================================== -->
+        <section id="hero-section" class="min-h-screen flex flex-col justify-center items-center text-center -mt-24 px-4" aria-label="Introducción y presentación">
             <div class="max-w-4xl z-10">
+                <img src="images/profile_photo.JPG" 
+                     alt="Foto profesional de Gabriel Santiago Murillo, Ingeniero Biomédico y Científico de Datos" 
+                     class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg"
+                     width="160" 
+                     height="160"
+                     loading="eager">
                 
-                <!-- CAMBIO: Tamaños de imagen ajustados para mejor proporción en móvil -->
-                <img src="images/profile_photo.JPG" alt="Foto de Gabriel Santiago Murillo" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 border-4 border-secondary shadow-lg">
-                
-                <!-- CAMBIO: Tamaños de fuente ajustados para móvil -->
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
                     Gabriel Santiago Murillo
                 </h1>
                 
-                <p class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300 font-medium">
-                    <span id="typewriter"></span><span class="typewriter-cursor"></span>
-                </p>
+                <div class="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300 font-medium">
+                    <span id="typewriter" aria-live="polite"></span><span class="typewriter-cursor" aria-hidden="true"></span>
+                </div>
                 
                 <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-gray-400" data-key="hero_subtitle">
                     Soy el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.
                 </p>
                 
-                <div class="mt-8 flex justify-center space-x-6">
-                    <a href="https://linkedin.com/in/gabriel-santiago-murillo01" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/GabrielSMurillo" target="_blank" aria-label="GitHub" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fab fa-github"></i></a>
-                    <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" aria-label="Email" class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl"><i class="fas fa-envelope"></i></a>
-                </div>
+                <!-- Social Links -->
+                <nav class="mt-8 flex justify-center space-x-6" role="navigation" aria-label="Redes sociales">
+                    <a href="https://linkedin.com/in/gabriel-santiago-murillo01" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl focus-ring"
+                       aria-label="Perfil de LinkedIn de Gabriel Murillo">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/GabrielSMurillo" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl focus-ring"
+                       aria-label="Perfil de GitHub de Gabriel Murillo">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" 
+                       class="text-gray-400 hover:accent-color transition-transform hover:scale-110 text-3xl focus-ring"
+                       aria-label="Enviar correo electrónico a Gabriel Murillo">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </nav>
             </div>
         </section>
-        <!-- FIN DE LA SECCIÓN HERO CORREGIDA -->
 
-        <!-- About Me Section -->
-        <section id="about" class="py-24 fade-in-section">
+        <!-- =================================================================== -->
+        <!-- ABOUT SECTION                                                       -->
+        <!-- =================================================================== -->
+        <section id="about" class="py-24 fade-in-section" aria-labelledby="about-heading">
             <div class="grid md:grid-cols-5 gap-12 items-center">
                 <div class="md:col-span-3 text-lg text-gray-300 space-y-4">
-                    <h2 class="text-4xl font-bold text-white mb-6" data-key="about_title">Sobre mi</h2>
+                    <h2 id="about-heading" class="text-4xl font-bold text-white mb-6" data-key="about_title">Sobre mi</h2>
                     <div data-key="about_desc">
-                        <p>Mi carrera no es una colección de títulos, sino una trayectoria deliberada. Comencé con la <b class="text-white">Ingeniería Biomédica</b> para entender el 'cómo' de los sistemas biológicos. Mi curiosidad me llevó a la <b class="text-white">Medicina</b>, buscando el 'porqué' y el contexto humano.</p><p>Hoy, he unificado estas perspectivas en la <b class="accent-color">ciencia de datos</b>. Mi objetivo es usar la IA para traducir la complejidad biológica en claridad, creando herramientas que potencien la capacidad humana en el sector salud.</p>
+                        <p>Mi carrera no es una colección de títulos, sino una trayectoria deliberada. Comencé con la <b class="text-white">Ingeniería Biomédica</b> para entender el 'cómo' de los sistemas biológicos. Mi curiosidad me llevó a la <b class="text-white">Medicina</b>, buscando el 'porqué' y el contexto humano.</p>
+                        <p>Hoy, he unificado estas perspectivas en la <b class="accent-color">ciencia de datos</b>. Mi objetivo es usar la IA para traducir la complejidad biológica en claridad, creando herramientas que potencien la capacidad humana en el sector salud.</p>
                     </div>
                 </div>
                 <div class="md:col-span-2">
-                    <img src="images/banner.png" alt="Representación de análisis de datos" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                    <img src="images/banner.png" 
+                         alt="Visualización de análisis de datos médicos y patrones biomédicos" 
+                         class="rounded-xl shadow-2xl w-full h-auto object-cover"
+                         width="400"
+                         height="300"
+                         loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-24 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-4 text-white" data-key="skills_title">Habilidades Clave</h2>
+        <!-- =================================================================== -->
+        <!-- SKILLS SECTION                                                      -->
+        <!-- =================================================================== -->
+        <section id="skills" class="py-24 fade-in-section" aria-labelledby="skills-heading">
+            <h2 id="skills-heading" class="text-4xl font-bold text-center mb-4 text-white" data-key="skills_title">Habilidades Clave</h2>
             <p class="text-lg text-gray-400 text-center max-w-3xl mx-auto mb-12" data-key="skills_subtitle">
                 Una visión holística de mis competencias, desde el desarrollo de modelos de Machine Learning hasta la comprensión profunda del dominio clínico.
             </p>
             <div class="glass-card p-6 rounded-xl">
                 <div class="chart-container">
-                    <canvas id="skillsChart"></canvas>
+                    <canvas id="skillsChart" aria-label="Gráfico radar de habilidades técnicas" role="img"></canvas>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-24 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="experience_title">Experiencia Profesional</h2>
-            <div id="experience-container" class="max-w-3xl mx-auto space-y-8">
+        <!-- =================================================================== -->
+        <!-- EXPERIENCE SECTION                                                  -->
+        <!-- =================================================================== -->
+        <section id="experience" class="py-24 fade-in-section" aria-labelledby="experience-heading">
+            <h2 id="experience-heading" class="text-4xl font-bold text-center mb-16 text-white" data-key="experience_title">Experiencia Profesional</h2>
+            <div id="experience-container" class="max-w-3xl mx-auto space-y-8" role="list">
                 <!-- Experience items will be injected here by JavaScript -->
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="projects_title">Proyectos Destacados</h2>
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- =================================================================== -->
+        <!-- PROJECTS SECTION                                                    -->
+        <!-- =================================================================== -->
+        <section id="projects" class="py-24 fade-in-section" aria-labelledby="projects-heading">
+            <h2 id="projects-heading" class="text-4xl font-bold text-center mb-16 text-white" data-key="projects_title">Proyectos Destacados</h2>
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
                 <!-- Project cards will be injected here by JavaScript -->
             </div>
         </section>
 
-        <!-- Education & Certs Section -->
-        <section id="education" class="py-24 fade-in-section">
-             <h2 class="text-4xl font-bold text-center mb-16 text-white" data-key="education_title">Educación y Certificaciones</h2>
+        <!-- =================================================================== -->
+        <!-- EDUCATION SECTION                                                   -->
+        <!-- =================================================================== -->
+        <section id="education" class="py-24 fade-in-section" aria-labelledby="education-heading">
+             <h2 id="education-heading" class="text-4xl font-bold text-center mb-16 text-white" data-key="education_title">Educación y Certificaciones</h2>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                 <div id="education-container">
+                 <div id="education-container" role="list">
                     <!-- Education will be injected here -->
                  </div>
-                 <div id="certs-container">
+                 <div id="certs-container" role="list">
                     <!-- Certs will be injected here -->
                  </div>
              </div>
         </section>
         
-        <!-- INICIO DE LA SECCIÓN DE CONTACTO CORREGIDA -->
-        <section id="contact" class="py-24 fade-in-section">
+        <!-- =================================================================== -->
+        <!-- CONTACT SECTION                                                     -->
+        <!-- =================================================================== -->
+        <section id="contact" class="py-24 fade-in-section" aria-labelledby="contact-heading">
             <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-white" data-key="contact_title">Hablemos</h2>
+                <h2 id="contact-heading" class="text-4xl font-bold text-white" data-key="contact_title">Hablemos</h2>
                 <p class="mt-4 text-lg text-gray-400" data-key="contact_desc">
                     Mi curiosidad es mi motor. Si tienes un desafío complejo, una idea innovadora o una posición donde pueda aportar valor, me encantaría conversar.
                 </p>
-                <!-- ESTE ES EL ENLACE CORREGIDO -->
-                <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" class="mt-8 inline-block bg-accent-color text-gray-900 font-bold px-8 py-4 rounded-full text-lg hover:bg-cyan-300 transition-transform hover:scale-105" data-key="contact_button">
+                <a href="mailto:santiagomurillob@gmail.com?subject=Contacto%20desde%20tu%20Portafolio%20Web" 
+                   class="mt-8 inline-block btn-primary text-lg focus-ring" 
+                   data-key="contact_button">
                     Enviar un Mensaje
                 </a>
             </div>
         </section>
-        <!-- FIN DE LA SECCIÓN DE CONTACTO CORREGIDA -->
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-secondary mt-20 border-t border-secondary">
+    <!-- =================================================================== -->
+    <!-- FOOTER                                                              -->
+    <!-- =================================================================== -->
+    <footer class="bg-secondary mt-20 border-t border-secondary" role="contentinfo">
         <div class="container mx-auto px-6 py-8 text-center text-gray-400">
             <p>&copy; <span id="year"></span> Gabriel Santiago Murillo. <span data-key="footer_text">Construido con pasión y código.</span></p>
+            <p class="mt-2 text-sm">
+                <span class="sr-only">Desarrollado con:</span>
+                HTML5, CSS3, JavaScript, Tailwind CSS, Chart.js
+            </p>
         </div>
     </footer>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden">
-        <div id="modalContent" class="glass-card rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8 relative transform transition-transform duration-300 scale-95">
-            <!-- DENTRO DEL DIV con id="modalContent" -->
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl">&times;</button>
-            <!-- AÑADE ESTA LÍNEA DE IMAGEN -->
-            <img id="modalImage" src="" alt="Imagen del Proyecto" class="w-full h-64 object-cover rounded-lg mb-6">
+    <!-- =================================================================== -->
+    <!-- PROJECT MODAL                                                       -->
+    <!-- =================================================================== -->
+    <div id="projectModal" 
+         class="fixed inset-0 bg-black bg-opacity-80 modal-backdrop flex items-center justify-center p-4 z-50 hidden"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modalTitle"
+         aria-describedby="modalDescription">
+        <div id="modalContent" class="glass-card rounded-xl max-w-3xl w-full modal-content p-8 relative transform transition-transform duration-300 scale-95">
+            <button id="closeModal" 
+                    class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl focus-ring"
+                    aria-label="Cerrar modal"
+                    type="button">
+                &times;
+            </button>
+            
+            <img id="modalImage" 
+                 src="" 
+                 alt="" 
+                 class="w-full h-64 object-cover rounded-lg mb-6"
+                 loading="lazy">
+            
             <h3 id="modalTitle" class="text-3xl font-bold text-white mb-2"></h3>
-            <div id="modalTags" class="flex flex-wrap gap-2 mb-6"></div>
+            
+            <div id="modalTags" class="flex flex-wrap gap-2 mb-6" role="list" aria-label="Tecnologías utilizadas"></div>
+            
             <div id="modalDescription" class="text-gray-300 space-y-4"></div>
-            <!-- INICIO DEL NUEVO BLOQUE DE BOTONES -->
+            
             <div class="mt-8 flex gap-4">
-                <a id="modalGithubLink" href="#" target="_blank" class="flex-1 text-center bg-slate-700 text-white font-semibold px-4 py-3 rounded-lg hover:bg-slate-600 transition-all">
-                    <i class="fab fa-github mr-2"></i><span data-key="modal_github">Ver Código</span>
+                <a id="modalGithubLink" 
+                   href="#" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex-1 text-center bg-slate-700 text-white font-semibold px-4 py-3 rounded-lg hover:bg-slate-600 transition-all focus-ring">
+                    <i class="fab fa-github mr-2" aria-hidden="true"></i>
+                    <span data-key="modal_github">Ver Código</span>
                 </a>
-                <!-- BOTÓN AÑADIDO -->
-                <a id="modalLiveLink" href="#" target="_blank" class="flex-1 text-center bg-accent-color text-gray-900 font-semibold px-4 py-3 rounded-lg hover:bg-cyan-300 transition-all">
-                    <i class="fas fa-external-link-alt mr-2"></i><span data-key="modal_live">Ver Reporte</span>
+                
+                <a id="modalLiveLink" 
+                   href="#" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex-1 text-center btn-primary">
+                    <i class="fas fa-external-link-alt mr-2" aria-hidden="true"></i>
+                    <span data-key="modal_live">Ver Reporte</span>
                 </a>
             </div>
-            <!-- FIN DEL NUEVO BLOQUE DE BOTONES -->
         </div>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- DATA STORE ---
+        'use strict';
+        
+        /* =================================================================== */
+        /* PORTAFOLIO GABRIEL MURILLO - MAIN APPLICATION                       */
+        /* =================================================================== */
+        
+        /**
+         * Configuración de la aplicación
+         */
+        const CONFIG = {
+            ANIMATION_DELAY: 100,
+            TYPEWRITER_SPEED: 100,
+            TYPEWRITER_PAUSE: 2000,
+            CHART_ANIMATION_DURATION: 1500,
+            SCROLL_THRESHOLD: 50,
+            INTERSECTION_THRESHOLD: 0.1,
+            INTERSECTION_ROOT_MARGIN: "0px 0px -50px 0px"
+        };
+
+        /**
+         * Estado global de la aplicación
+         */
+        const AppState = {
+            currentLang: 'es',
+            skillsChart: null,
+            isInitialized: false,
+            observers: new Map()
+        };
+
+        /**
+         * Datos de traducciones organizados por idioma
+         */
         const translations = {
             es: {
                 hero_greeting: "Hola, soy Gabriel Murillo",
                 typewriter: ["Ingeniero Biomédico", "Científico de Datos", "Especialista en IA"],
                 hero_subtitle: 'Construyo el puente entre la salud y la tecnología, aplicando ciencia de datos e IA para crear soluciones con impacto clínico.',
-                nav_about: 'Sobre Mí', nav_skills: 'Habilidades', nav_experience: 'Experiencia', nav_projects: 'Proyectos', nav_cv: 'Descargar CV', nav_contact: 'Contáctame',
+                nav_about: 'Sobre Mí', 
+                nav_skills: 'Habilidades', 
+                nav_experience: 'Experiencia', 
+                nav_projects: 'Proyectos', 
+                nav_cv: 'Descargar CV', 
+                nav_contact: 'Contáctame',
                 nav_cv_path: 'CV_Gabriel_Murillo_ES.pdf',
-                lang_es: 'ES', lang_en: 'EN',
+                lang_es: 'ES', 
+                lang_en: 'EN',
                 about_title: 'Sobre mi',
                 about_desc: `<p>Mi carrera no es una colección de títulos, sino una trayectoria deliberada. Comencé con la <b class="text-white">Ingeniería Biomédica</b> para entender el 'cómo' de los sistemas biológicos. Mi curiosidad me llevó a la <b class="text-white">Medicina</b>, buscando el 'porqué' y el contexto humano.</p><p>Hoy, he unificado estas perspectivas en la <b class="accent-color">ciencia de datos</b>. Mi objetivo es usar la IA para traducir la complejidad biológica en claridad, creando herramientas que potencien la capacidad humana en el sector salud.</p>`,
                 skills_title: 'Habilidades Clave',
                 skills_subtitle: 'Una visión holística de mis competencias, desde el desarrollo de modelos de Machine Learning hasta la comprensión profunda del dominio clínico.',
+                skills_labels: ['Ciencia de Datos y ML', 'Programación', 'Dominio Clínico', 'Visualización', 'Cloud y DevOps'],
                 experience_title: 'Experiencia Profesional',
                 projects_title: 'Proyectos Destacados',
                 education_title: 'Educación y Certificaciones',
@@ -429,23 +1044,28 @@
                 contact_desc: 'Mi curiosidad es mi motor. Si tienes un desafío complejo, una idea innovadora o una posición donde pueda aportar valor, me encantaría conversar.',
                 contact_button: 'Enviar un Mensaje',
                 footer_text: 'Construido con pasión y código.',
-                modal_github: 'Ver Código', modal_button: 'Ver Detalles',
-                skills_title: 'Habilidades Clave',
-                skills_subtitle: 'Una visión holística de mis competencias, desde el desarrollo de modelos de Machine Learning hasta la comprensión profunda del dominio clínico.',
-                skills_labels: ['Ciencia de Datos y ML', 'Programación', 'Dominio Clínico', 'Visualización', 'Cloud y DevOps'], // <-- AÑADE ESTA LÍNEA
-                experience_title: 'Experiencia Profesional'
+                modal_github: 'Ver Código',
+                modal_live: 'Ver Reporte',
+                modal_button: 'Ver Detalles'
             },
             en: {
                 hero_greeting: "Hi, I'm Gabriel Murillo",
                 typewriter: ["Biomedical Engineer", "Data Scientist", "AI Specialist"],
                 hero_subtitle: 'I build the bridge between health and technology, applying data science and AI to create solutions with clinical impact.',
-                nav_about: 'About Me', nav_skills: 'Skills', nav_experience: 'Experience', nav_projects: 'Projects', nav_cv: 'Download CV', nav_contact: 'Contact Me',
+                nav_about: 'About Me', 
+                nav_skills: 'Skills', 
+                nav_experience: 'Experience', 
+                nav_projects: 'Projects', 
+                nav_cv: 'Download CV', 
+                nav_contact: 'Contact Me',
                 nav_cv_path: 'CV_Gabriel_Murillo_EN.pdf',
-                lang_es: 'ES', lang_en: 'EN',
+                lang_es: 'ES', 
+                lang_en: 'EN',
                 about_title: 'About me',
                 about_desc: `<p>My career is not a collection of titles, but a deliberate trajectory. I started with <b class="text-white">Biomedical Engineering</b> to understand the 'how' of biological systems. My curiosity led me to <b class="text-white">Medicine</b>, seeking the 'why' and the human context.</p><p>Today, I have unified these perspectives in <b class="accent-color">data science</b>. My goal is to use AI to translate biological complexity into clarity, creating tools that empower human capability in the healthcare sector.</p>`,
                 skills_title: 'Core Skills',
                 skills_subtitle: 'A holistic view of my competencies, from developing Machine Learning models to a deep understanding of the clinical domain.',
+                skills_labels: ['Data Science & ML', 'Programming', 'Clinical Domain', 'Visualization', 'Cloud & DevOps'],
                 experience_title: 'Professional Experience',
                 projects_title: 'Featured Projects',
                 education_title: 'Education & Certifications',
@@ -453,386 +1073,780 @@
                 contact_desc: 'My curiosity is my engine. If you have a complex challenge, an innovative idea, or a position where I can add value, I would love to chat.',
                 contact_button: 'Send a Message',
                 footer_text: 'Built with passion and code.',
-                modal_github: 'View Code', modal_button: 'View Details',
-                skills_title: 'Core Skills',
-                skills_subtitle: 'A holistic view of my competencies, from developing Machine Learning models to a deep understanding of the clinical domain.',
-                skills_labels: ['Data Science & ML', 'Programming', 'Clinical Domain', 'Visualization', 'Cloud & DevOps'], // <-- AÑADE ESTA LÍNEA
-                experience_title: 'Professional Experience'
+                modal_github: 'View Code',
+                modal_live: 'View Report',
+                modal_button: 'View Details'
             }
         };
 
+        /**
+         * Datos de experiencia profesional
+         */
         const experienceData = {
             es: [
-                { role: 'Docente Asociado en Estadística y Análisis de Datos', company: 'Fundación de Educación Superior Nueva América (FESNA)', date: 'Sept 2024 – Presente', details: 'Diseñé e impartí currículos integrales para cursos virtuales en <strong>Python</strong> y <strong>MS Excel</strong> avanzado, enfocados en inteligencia de negocios y análisis de datos.', icon: 'fas fa-chalkboard-teacher' },
-                { role: 'Supervisor Bilingüe', company: 'Teleperformance', date: 'Ene 2023 – Sept 2023', details: 'Analicé y visualicé los KPIs del equipo usando <strong>Tableau</strong> y <strong>MS Excel</strong> para identificar tendencias de rendimiento e informar planes de acción basados en datos.', icon: 'fas fa-users' },
-                { role: 'Agente de Servicio al Cliente Bilingüe', company: 'Teleperformance', date: 'Jun 2022 - Dic 2022', details: 'Brindé soporte de alta calidad para un cliente del sector bancario multinacional, resolviendo consultas complejas en un entorno bilingüe.', icon: 'fas fa-headset' },
-                { role: 'Técnico Contable', company: 'Topografía Pozos Profundos Aguas Subterráneas LTDA', date: 'Sept 2015 - Oct 2016', details: 'Gestioné el ciclo contable completo, asegurando la precisión, integridad y cumplimiento de los registros y transacciones financieras.', icon: 'fas fa-calculator' }
+                { 
+                    role: 'Docente Asociado en Estadística y Análisis de Datos', 
+                    company: 'Fundación de Educación Superior Nueva América (FESNA)', 
+                    date: 'Sept 2024 – Presente', 
+                    details: 'Diseñé e impartí currículos integrales para cursos virtuales en <strong>Python</strong> y <strong>MS Excel</strong> avanzado, enfocados en inteligencia de negocios y análisis de datos.', 
+                    icon: 'fas fa-chalkboard-teacher' 
+                },
+                { 
+                    role: 'Supervisor Bilingüe', 
+                    company: 'Teleperformance', 
+                    date: 'Ene 2023 – Sept 2023', 
+                    details: 'Analicé y visualicé los KPIs del equipo usando <strong>Tableau</strong> y <strong>MS Excel</strong> para identificar tendencias de rendimiento e informar planes de acción basados en datos.', 
+                    icon: 'fas fa-users' 
+                },
+                { 
+                    role: 'Agente de Servicio al Cliente Bilingüe', 
+                    company: 'Teleperformance', 
+                    date: 'Jun 2022 - Dic 2022', 
+                    details: 'Brindé soporte de alta calidad para un cliente del sector bancario multinacional, resolviendo consultas complejas en un entorno bilingüe.', 
+                    icon: 'fas fa-headset' 
+                },
+                { 
+                    role: 'Técnico Contable', 
+                    company: 'Topografía Pozos Profundos Aguas Subterráneas LTDA', 
+                    date: 'Sept 2015 - Oct 2016', 
+                    details: 'Gestioné el ciclo contable completo, asegurando la precisión, integridad y cumplimiento de los registros y transacciones financieras.', 
+                    icon: 'fas fa-calculator' 
+                }
             ],
             en: [
-                { role: 'Associate Professor in Statistics and Data Analysis Tools', company: 'Fundación de Educación Superior Nueva América (FESNA)', date: 'Sept 2024 – Present', details: 'Designed and instructed comprehensive curricula for virtual courses in <strong>Python</strong> and advanced <strong>MS Excel</strong>, focusing on practical business intelligence and data analysis applications.', icon: 'fas fa-chalkboard-teacher' },
-                { role: 'Bilingual Supervisor', company: 'Teleperformance', date: 'Jan 2023 – Sept 2023', details: 'Analyzed and visualized team KPIs using <strong>Tableau</strong> and <strong>MS Excel</strong> to identify performance trends and inform data-driven action plans.', icon: 'fas fa-users' },
-                { role: 'Bilingual Customer Service Representative', company: 'Teleperformance', date: 'Jun 2022 - Dec 2022', details: 'Delivered high-quality customer support for a multinational banking client, resolving complex inquiries in a bilingual environment.', icon: 'fas fa-headset' },
-                { role: 'Accounting Technician', company: 'Topografía Pozos Profundos Aguas Subterráneas LTDA', date: 'Sept 2015 - Oct 2016', details: 'Managed the full-cycle accounting process, ensuring the accuracy, integrity, and compliance of all financial records and transactions.', icon: 'fas fa-calculator' }
+                { 
+                    role: 'Associate Professor in Statistics and Data Analysis Tools', 
+                    company: 'Fundación de Educación Superior Nueva América (FESNA)', 
+                    date: 'Sept 2024 – Present', 
+                    details: 'Designed and instructed comprehensive curricula for virtual courses in <strong>Python</strong> and advanced <strong>MS Excel</strong>, focusing on practical business intelligence and data analysis applications.', 
+                    icon: 'fas fa-chalkboard-teacher' 
+                },
+                { 
+                    role: 'Bilingual Supervisor', 
+                    company: 'Teleperformance', 
+                    date: 'Jan 2023 – Sept 2023', 
+                    details: 'Analyzed and visualized team KPIs using <strong>Tableau</strong> and <strong>MS Excel</strong> to identify performance trends and inform data-driven action plans.', 
+                    icon: 'fas fa-users' 
+                },
+                { 
+                    role: 'Bilingual Customer Service Representative', 
+                    company: 'Teleperformance', 
+                    date: 'Jun 2022 - Dec 2022', 
+                    details: 'Delivered high-quality customer support for a multinational banking client, resolving complex inquiries in a bilingual environment.', 
+                    icon: 'fas fa-headset' 
+                },
+                { 
+                    role: 'Accounting Technician', 
+                    company: 'Topografía Pozos Profundos Aguas Subterráneas LTDA', 
+                    date: 'Sept 2015 - Oct 2016', 
+                    details: 'Managed the full-cycle accounting process, ensuring the accuracy, integrity, and compliance of all financial records and transactions.', 
+                    icon: 'fas fa-calculator' 
+                }
             ]
         };
         
-        // --- INICIO DEL BLOQUE DE DATOS DE PROYECTOS ACTUALIZADO ---
-// --- INICIO DEL BLOQUE DE DATOS DE PROYECTOS ACTUALIZADO ---
-      const projectsData = {
-          es: [
-              { 
-                  title: 'Clasificador de Sonidos Respiratorios con MLOps', 
-                  image: 'images/lungs.png', 
-                  tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
-                  description: `<p>Proyecto de IA de extremo a extremo para clasificar 8 patologías respiratorias desde audio pulmonar, culminando en un servicio desplegable. Este proyecto demuestra el ciclo de vida completo de un producto de Machine Learning.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Modelado Iterativo:</strong> Se compararon sistemáticamente 3 arquitecturas (Random Forest, 1D-CNN, 2D-CNN) para seleccionar el modelo óptimo.</li><li><strong>Modelo de Vanguardia:</strong> El modelo final utiliza una arquitectura <strong>EfficientNet-B0</strong> con <strong>Transfer Learning</strong> sobre Mel-espectrogramas, alcanzando un F1-score de <strong>0.91</strong> y mejorando drásticamente el recall en clases minoritarias.</li><li><strong>Resolución de Overfitting:</strong> Se diagnosticó y mitigó exitosamente el sobreajuste en modelos intermedios mediante técnicas de regularización como Data Augmentation y Early Stopping.</li><li><strong>MLOps y Despliegue:</strong> El modelo ganador fue encapsulado en una API RESTful con <strong>FastAPI</strong> y contenerizado con <strong>Docker</strong>, creando un artefacto de software reproducible y listo para producción.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/proyecto-cero-epoc`, 
-                  liveUrl: 'proyect_zero_copd.pdf'
-              },
-              { 
-                  title: 'Predicción de Aterrizaje del Falcon 9 (IBM Capstone)', 
-                  image: 'images/spacex.png', 
-                  tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
-                  description: `<p>Proyecto final del <strong>Certificado Profesional en Ciencia de Datos de IBM</strong>, donde lideré un análisis de extremo a extremo para predecir el éxito en los aterrizajes de la primera etapa del cohete Falcon 9.</p><p>El proyecto abarcó todo el ciclo de vida de la ciencia de datos: recolección de datos multi-fuente (APIs, Web Scraping), limpieza de datos (wrangling), análisis exploratorio (EDA) con SQL y visualizaciones, y la construcción de un dashboard interactivo con <strong>Plotly Dash</strong>. Finalmente, se entrenaron y evaluaron múltiples modelos de Machine Learning (Regresión Logística, SVM, Árbol de Decisión) para encontrar el de mejor rendimiento.</p><p>Este proyecto demuestra mi habilidad para manejar datasets complejos de cualquier dominio y aplicar un riguroso proceso analítico, una competencia directamente transferible a los desafíos del sector salud.</p>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/spacex-IBM-DataScientist-capstone-project/`, 
-                  liveUrl: 'Rocket.pdf'
-              },
-              { 
-                  title: 'Diagnóstico de Patologías Oftálmicas con IA', 
-                  image: 'images/eye.png', 
-                  tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
-                  description: `<p>Desarrollo de un sistema de diagnóstico automatizado basado en Deep Learning para clasificar imágenes de fondo de ojo en cuatro categorías: Normal, Retinopatía Diabética, Catarata y Glaucoma. El objetivo es proveer una herramienta de apoyo para la detección temprana y precisa de patologías oculares.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li>Utilización de una Red Neuronal Convolucional (CNN) con arquitectura <strong>EfficientNetB0</strong> y técnicas de <strong>Transfer Learning</strong> para un alto rendimiento.</li><li>Preprocesamiento avanzado de imágenes para mejorar el contraste y aislar regiones de interés.</li><li>Evaluación del modelo con métricas rigurosas (Accuracy > 75%, AUC > 0.90).</li><li>Implementación de técnicas de IA Explicable (<strong>XAI</strong>) mediante mapas de calor (Saliency Maps) para validar que el modelo se enfoca en características clínicamente relevantes.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
-                  liveUrl: 'IAparaMedicos.pdf' 
-              },
-              { 
-                  title: 'Modelo Epidemiológico de la Malaria en Zonas Mineras', 
-                  image: 'images/malaria.png', 
-                  tags: ['Python', 'Modelado Matemático', 'Epidemiología', 'Simulación'], 
-                  description: `<p>Desarrollo de un modelo matemático metapoblacional (basado en Ross-McDonald) para determinar el impacto de la migración, impulsada por la minería ilegal, en la transmisión de la <strong>Malaria</strong> en la costa pacífica colombiana.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Proceso:</h4><ul class='list-disc list-inside space-y-2'><li>Formulación de un modelo de dos parches (urbano y rural/minero).</li><li>Implementación de ecuaciones diferenciales para simular las dinámicas de infección.</li><li>Análisis del impacto de las tasas de migración en la propagación de la enfermedad.</li><li>Validación de que mayores tasas de migración a zonas mineras incrementan proporcionalmente el número de infectados.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
-                  liveUrl: 'Malaria_Bajamar (4).pdf'
-              },
-          ],
-          en: [
-              { 
-                  title: 'Respiratory Sound Classifier with MLOps', 
-                  image: 'images/lungs.png', 
-                  tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
-                  description: `<p>End-to-end AI project to classify 8 respiratory pathologies from lung audio, culminating in a deployable service. This project demonstrates the complete lifecycle of a Machine Learning product.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Iterative Modeling:</strong> Systematically compared 3 architectures (Random Forest, 1D-CNN, 2D-CNN) to select the optimal model.</li><li><strong>State-of-the-Art Model:</strong> The final model uses an <strong>EfficientNet-B0</strong> architecture with <strong>Transfer Learning</strong> on Mel-spectrograms, achieving an F1-score of <strong>0.91</strong> and drastically improving recall on minority classes.</li><li><strong>Overfitting Resolution:</strong> Successfully diagnosed and mitigated overfitting in intermediate models using regularization techniques like Data Augmentation and Early Stopping.</li><li><strong>MLOps & Deployment:</strong> The winning model was encapsulated in a RESTful API with <strong>FastAPI</strong> and containerized with <strong>Docker</strong>, creating a reproducible, production-ready software artifact.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/proyecto-cero-epoc`, 
-                  liveUrl: 'proyect_zero_copd.pdf'
-              },
-              { 
-                  title: 'Falcon 9 Landing Prediction (IBM Capstone)', 
-                  image: 'images/spacex.png',
-                  tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
-                  description: `<p>Final project for the <strong>IBM Data Science Professional Certificate</strong>, where I led an end-to-end analysis to predict the landing success of the Falcon 9 rocket's first stage.</p><p>The project covered the entire data science lifecycle: multi-source data collection (APIs, Web Scraping), data wrangling, exploratory data analysis (EDA) with SQL and visualizations, and building an interactive dashboard with <strong>Plotly Dash</strong>. Finally, multiple Machine Learning models (Logistic Regression, SVM, Decision Tree) were trained and evaluated to find the best performer.</p><p>This project demonstrates my ability to handle complex datasets from any domain and apply a rigorous analytical process, a competence directly transferable to the challenges of the healthcare sector.</p>`, 
-                  githubUrl: 'https://github.com/GabrielSMurillo/spacex-IBM_DataScientist_capstone-project', 
-                  liveUrl: 'Rocket.pdf'
-              },
-              { 
-                  title: 'AI for Ophthalmic Pathology Diagnosis', 
-                  image: 'images/eye.png', 
-                  tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
-                  description: `<p>Development of an automated diagnostic system based on Deep Learning to classify retinal fundus images into four categories: Normal, Diabetic Retinopathy, Cataract, and Glaucoma. The goal is to provide a support tool for the early and accurate detection of eye diseases.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li>Utilization of a Convolutional Neural Network (CNN) with an <strong>EfficientNetB0</strong> architecture and <strong>Transfer Learning</strong> techniques for high performance.</li><li>Advanced image preprocessing to enhance contrast and isolate regions of interest.</li><li>Model evaluation with rigorous metrics (Accuracy > 75%, AUC > 0.90).</li><li>Implementation of Explainable AI (<strong>XAI</strong>) techniques using heatmaps (Saliency Maps) to validate that the model focuses on clinically relevant features.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn`, 
-                  liveUrl: 'IAparaMedicos.pdf' 
-              },
-              { 
-                  title: 'Epidemiological Modeling of Malaria in Mining Areas', 
-                  image: 'images/malaria.png', 
-                  tags: ['Python', 'Mathematical Modeling', 'Epidemiology', 'Simulation'], 
-                  description: `<p>Developed a metapopulational mathematical model (based on Ross-McDonald) to determine the impact of migration, driven by illegal mining, on <strong>Malaria</strong> transmission on the Colombian Pacific coast.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Process:</h4><ul class='list-disc list-inside space-y-2'><li>Formulation of a two-patch model (urban and rural/mining).</li><li>Implementation of differential equations to simulate infection dynamics.</li><li>Analysis of the impact of migration rates on disease spread.</li><li>Validation that higher migration rates to mining areas proportionally increase the number of infected individuals.</li></ul>`, 
-                  githubUrl: `https://github.com/GabrielSMurillo/malaria-epidemiological-model`,
-                  liveUrl: 'Malaria_Bajamar (4).pdf'
-              }
-          ]
-      };
-      // --- FIN DEL BLOQUE DE DATOS DE PROYECTOS ---
+        /**
+         * Datos de proyectos
+         */
+        /**
+         * Datos de proyectos
+         */
+        const projectsData = {
+            es: [
+                { 
+                    title: 'Clasificador de Sonidos Respiratorios con MLOps', 
+                    image: 'images/lungs.png', 
+                    tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
+                    description: `<p>Proyecto de IA de extremo a extremo para clasificar 8 patologías respiratorias desde audio pulmonar, culminando en un servicio desplegable. Este proyecto demuestra el ciclo de vida completo de un producto de Machine Learning.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Modelado Iterativo:</strong> Se compararon sistemáticamente 3 arquitecturas (Random Forest, 1D-CNN, 2D-CNN) para seleccionar el modelo óptimo.</li><li><strong>Modelo de Vanguardia:</strong> El modelo final utiliza una arquitectura <strong>EfficientNet-B0</strong> con <strong>Transfer Learning</strong> sobre Mel-espectrogramas, alcanzando un F1-score de <strong>0.91</strong> y mejorando drásticamente el recall en clases minoritarias.</li><li><strong>Resolución de Overfitting:</strong> Se diagnosticó y mitigó exitosamente el sobreajuste en modelos intermedios mediante técnicas de regularización como Data Augmentation y Early Stopping.</li><li><strong>MLOps y Despliegue:</strong> El modelo ganador fue encapsulado en una API RESTful con <strong>FastAPI</strong> y contenerizado con <strong>Docker</strong>, creando un artefacto de software reproducible y listo para producción.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/proyecto-cero-epoc', 
+                    liveUrl: 'proyect_zero_copd.pdf'
+                },
+                { 
+                    title: 'Predicción de Aterrizaje del Falcon 9 (IBM Capstone)', 
+                    image: 'images/spacex.png', 
+                    tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
+                    description: `<p>Proyecto final del <strong>Certificado Profesional en Ciencia de Datos de IBM</strong>, donde lideré un análisis de extremo a extremo para predecir el éxito en los aterrizajes de la primera etapa del cohete Falcon 9.</p><p>El proyecto abarcó todo el ciclo de vida de la ciencia de datos: recolección de datos multi-fuente (APIs, Web Scraping), limpieza de datos (wrangling), análisis exploratorio (EDA) con SQL y visualizaciones, y la construcción de un dashboard interactivo con <strong>Plotly Dash</strong>. Finalmente, se entrenaron y evaluaron múltiples modelos de Machine Learning (Regresión Logística, SVM, Árbol de Decisión) para encontrar el de mejor rendimiento.</p><p>Este proyecto demuestra mi habilidad para manejar datasets complejos de cualquier dominio y aplicar un riguroso proceso analítico, una competencia directamente transferible a los desafíos del sector salud.</p>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/spacex-IBM-DataScientist-capstone-project/', 
+                    liveUrl: 'Rocket.pdf'
+                },
+                { 
+                    title: 'Diagnóstico de Patologías Oftálmicas con IA', 
+                    image: 'images/eye.png', 
+                    tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
+                    description: `<p>Desarrollo de un sistema de diagnóstico automatizado basado en Deep Learning para clasificar imágenes de fondo de ojo en cuatro categorías: Normal, Retinopatía Diabética, Catarata y Glaucoma. El objetivo es proveer una herramienta de apoyo para la detección temprana y precisa de patologías oculares.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Características Clave:</h4><ul class='list-disc list-inside space-y-2'><li>Utilización de una Red Neuronal Convolucional (CNN) con arquitectura <strong>EfficientNetB0</strong> y técnicas de <strong>Transfer Learning</strong> para un alto rendimiento.</li><li>Preprocesamiento avanzado de imágenes para mejorar el contraste y aislar regiones de interés.</li><li>Evaluación del modelo con métricas rigurosas (Accuracy > 75%, AUC > 0.90).</li><li>Implementación de técnicas de IA Explicable (<strong>XAI</strong>) mediante mapas de calor (Saliency Maps) para validar que el modelo se enfoca en características clínicamente relevantes.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn', 
+                    liveUrl: 'IAparaMedicos.pdf' 
+                },
+                { 
+                    title: 'Modelo Epidemiológico de la Malaria en Zonas Mineras', 
+                    image: 'images/malaria.png', 
+                    tags: ['Python', 'Modelado Matemático', 'Epidemiología', 'Simulación'], 
+                    description: `<p>Desarrollo de un modelo matemático metapoblacional (basado en Ross-McDonald) para determinar el impacto de la migración, impulsada por la minería ilegal, en la transmisión de la <strong>Malaria</strong> en la costa pacífica colombiana.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Proceso:</h4><ul class='list-disc list-inside space-y-2'><li>Formulación de un modelo de dos parches (urbano y rural/minero).</li><li>Implementación de ecuaciones diferenciales para simular las dinámicas de infección.</li><li>Análisis del impacto de las tasas de migración en la propagación de la enfermedad.</li><li>Validación de que mayores tasas de migración a zonas mineras incrementan proporcionalmente el número de infectados.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/malaria-epidemiological-model',
+                    liveUrl: 'Malaria_Bajamar (4).pdf'
+                }
+            ],
+            en: [
+                { 
+                    title: 'Respiratory Sound Classifier with MLOps', 
+                    image: 'images/lungs.png', 
+                    tags: ['Python', 'PyTorch', 'Deep Learning', 'Audio Processing', 'API', 'FastAPI', 'Docker', 'MLOps'], 
+                    description: `<p>End-to-end AI project to classify 8 respiratory pathologies from lung audio, culminating in a deployable service. This project demonstrates the complete lifecycle of a Machine Learning product.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li><strong>Iterative Modeling:</strong> Systematically compared 3 architectures (Random Forest, 1D-CNN, 2D-CNN) to select the optimal model.</li><li><strong>State-of-the-Art Model:</strong> The final model uses an <strong>EfficientNet-B0</strong> architecture with <strong>Transfer Learning</strong> on Mel-spectrograms, achieving an F1-score of <strong>0.91</strong> and drastically improving recall on minority classes.</li><li><strong>Overfitting Resolution:</strong> Successfully diagnosed and mitigated overfitting in intermediate models using regularization techniques like Data Augmentation and Early Stopping.</li><li><strong>MLOps & Deployment:</strong> The winning model was encapsulated in a RESTful API with <strong>FastAPI</strong> and containerized with <strong>Docker</strong>, creating a reproducible, production-ready software artifact.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/proyecto-cero-epoc', 
+                    liveUrl: 'proyect_zero_copd.pdf'
+                },
+                { 
+                    title: 'Falcon 9 Landing Prediction (IBM Capstone)', 
+                    image: 'images/spacex.png',
+                    tags: ['Python', 'Pandas', 'Machine Learning', 'API', 'Plotly Dash'], 
+                    description: `<p>Final project for the <strong>IBM Data Science Professional Certificate</strong>, where I led an end-to-end analysis to predict the landing success of the Falcon 9 rocket's first stage.</p><p>The project covered the entire data science lifecycle: multi-source data collection (APIs, Web Scraping), data wrangling, exploratory data analysis (EDA) with SQL and visualizations, and building an interactive dashboard with <strong>Plotly Dash</strong>. Finally, multiple Machine Learning models (Logistic Regression, SVM, Decision Tree) were trained and evaluated to find the best performer.</p><p>This project demonstrates my ability to handle complex datasets from any domain and apply a rigorous analytical process, a competence directly transferable to the challenges of the healthcare sector.</p>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/spacex-IBM_DataScientist_capstone-project', 
+                    liveUrl: 'Rocket.pdf'
+                },
+                { 
+                    title: 'AI for Ophthalmic Pathology Diagnosis', 
+                    image: 'images/eye.png', 
+                    tags: ['Python', 'TensorFlow', 'Deep Learning', 'Computer Vision', 'XAI'], 
+                    description: `<p>Development of an automated diagnostic system based on Deep Learning to classify retinal fundus images into four categories: Normal, Diabetic Retinopathy, Cataract, and Glaucoma. The goal is to provide a support tool for the early and accurate detection of eye diseases.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Key Features:</h4><ul class='list-disc list-inside space-y-2'><li>Utilization of a Convolutional Neural Network (CNN) with an <strong>EfficientNetB0</strong> architecture and <strong>Transfer Learning</strong> techniques for high performance.</li><li>Advanced image preprocessing to enhance contrast and isolate regions of interest.</li><li>Model evaluation with rigorous metrics (Accuracy > 75%, AUC > 0.90).</li><li>Implementation of Explainable AI (<strong>XAI</strong>) techniques using heatmaps (Saliency Maps) to validate that the model focuses on clinically relevant features.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/diagnostico-oftalmico-cnn', 
+                    liveUrl: 'IAparaMedicos.pdf' 
+                },
+                { 
+                    title: 'Epidemiological Modeling of Malaria in Mining Areas', 
+                    image: 'images/malaria.png', 
+                    tags: ['Python', 'Mathematical Modeling', 'Epidemiology', 'Simulation'], 
+                    description: `<p>Developed a metapopulational mathematical model (based on Ross-McDonald) to determine the impact of migration, driven by illegal mining, on <strong>Malaria</strong> transmission on the Colombian Pacific coast.</p><h4 class='text-xl font-semibold mt-4 mb-2 text-white'>Process:</h4><ul class='list-disc list-inside space-y-2'><li>Formulation of a two-patch model (urban and rural/mining).</li><li>Implementation of differential equations to simulate infection dynamics.</li><li>Analysis of the impact of migration rates on disease spread.</li><li>Validation that higher migration rates to mining areas proportionally increase the number of infected individuals.</li></ul>`, 
+                    githubUrl: 'https://github.com/GabrielSMurillo/malaria-epidemiological-model',
+                    liveUrl: 'Malaria_Bajamar (4).pdf'
+                }
+            ]
+        };
+
+        /**
+         * Datos de educación
+         */
         const educationData = {
             es: [
                 { degree: 'Ingeniero Biomédico', institution: 'Universidad de los Andes', date: '2017 - 2022' },
                 { degree: 'Formación Médica Fundamental', institution: 'Universidad Nacional de Colombia', date: '2022 - 2025' },
-                { degree: 'Técnico en Comercio y Finanzas', institution: 'Servicio Nacional de Aprendizaje (SENA)', date: '2015 - 2016' },
+                { degree: 'Técnico en Comercio y Finanzas', institution: 'Servicio Nacional de Aprendizaje (SENA)', date: '2015 - 2016' }
             ],
             en: [
                 { degree: 'Bachelor of Science in Biomedical Engineering', institution: 'Universidad de los Andes', date: '2017 - 2022' },
                 { degree: 'Foundational Medical Training', institution: 'Universidad Nacional de Colombia', date: '2022 - 2025' },
-                { degree: 'Technician in Commerce and Finance', institution: 'Servicio Nacional de Aprendizaje (SENA)', date: '2015 - 2016' },
+                { degree: 'Technician in Commerce and Finance', institution: 'Servicio Nacional de Aprendizaje (SENA)', date: '2015 - 2016' }
             ]
         };
         
+        /**
+         * Datos de certificaciones
+         */
         const certsData = {
             es: [
                 { name: 'Certificado Profesional en Ciencia de Datos de IBM', url: 'https://www.coursera.org' },
                 { name: 'Redes Neuronales y Deep Learning (DeepLearning.AI)', url: 'https://www.coursera.org' },
                 { name: 'Introducción a la Ciencia de Datos Clínica', url: 'https://www.coursera.org' },
-                { name: 'Especialización en Python para Todos', url: 'https://www.coursera.org' },
+                { name: 'Especialización en Python para Todos', url: 'https://www.coursera.org' }
             ],
             en: [
                 { name: 'IBM Data Science Professional Certificate', url: 'https://www.coursera.org' },
                 { name: 'Neural Networks and Deep Learning (DeepLearning.AI)', url: 'https://www.coursera.org' },
                 { name: 'Introduction to Clinical Data Science', url: 'https://www.coursera.org' },
-                { name: 'Python for Everybody Specialization', url: 'https://www.coursera.org' },
+                { name: 'Python for Everybody Specialization', url: 'https://www.coursera.org' }
             ]
         };
 
-        let currentLang = 'es';
-        let skillsChart;
-
-        // --- RENDER FUNCTIONS ---
-        const renderContent = () => {
-            const lang = currentLang;
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.dataset.key;
-                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-            document.documentElement.lang = lang;
-            document.getElementById('cv-download-link').href = translations[lang].nav_cv_path;
-            document.getElementById('cv-download-link-mobile').href = translations[lang].nav_cv_path;
-            renderExperience();
-            renderProjects();
-            renderEducationAndCerts();
-            renderChart();
+        /* =================================================================== */
+        /* UTILITY FUNCTIONS                                                   */
+        /* =================================================================== */
+        
+        /**
+         * Selector de elementos con manejo de errores
+         */
+        const $ = (selector) => {
+            const element = document.querySelector(selector);
+            if (!element) {
+                console.warn(`Element not found: ${selector}`);
+            }
+            return element;
         };
 
-        const renderExperience = () => {
-            const container = document.getElementById('experience-container');
-            container.innerHTML = experienceData[currentLang].map(item => `
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="${item.icon}"></i></div>
-                    <h3 class="text-xl font-bold text-white">${item.role}</h3>
-                    <p class="text-md font-semibold accent-color mb-2">${item.company}</p>
-                    <p class="text-sm text-gray-400 mb-3">${item.date}</p>
-                    <p class="text-gray-300">${item.details}</p>
-                </div>
-            `).join('');
-        };
+        /**
+         * Selector múltiple de elementos
+         */
+        const $$ = (selector) => document.querySelectorAll(selector);
 
-        const renderProjects = () => {
-            const grid = document.getElementById('project-grid');
-            grid.innerHTML = projectsData[currentLang].map((project, index) => `
-                <div class="glass-card project-card rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group cursor-pointer" data-index="${index}">
-                    <!-- IMAGEN AÑADIDA AQUÍ -->
-                    <div class="overflow-hidden h-48">
-                        <img src="${project.image}" alt="Previsualización del proyecto ${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="p-6 flex flex-col">
-                        <h3 class="text-xl font-bold text-white mb-2">${project.title}</h3>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            ${project.tags.map(tag => `<span class="bg-slate-700 text-xs font-medium px-2 py-1 rounded-full">${tag}</span>`).join('')}
-                        </div>
-                        <div class="flex-grow"></div>
-                        <span class="w-full mt-4 text-center text-accent-color font-semibold py-2" data-key="modal_button">${translations[currentLang].modal_button}</span>
-                    </div>
-                </div>
-            `).join('');
-        };
-                
-        const renderEducationAndCerts = () => {
-            const eduContainer = document.getElementById('education-container');
-            eduContainer.innerHTML = `<h3 class="text-2xl font-bold text-white mb-6">Educación</h3>` + educationData[currentLang].map(item => `
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold text-white">${item.degree}</h4>
-                    <p class="accent-color">${item.institution}</p>
-                    <p class="text-sm text-gray-500">${item.date}</p>
-                </div>
-            `).join('');
-            
-            const certsContainer = document.getElementById('certs-container');
-            certsContainer.innerHTML = `<h3 class="text-2xl font-bold text-white mb-6">Certificaciones Clave</h3>` + certsData[currentLang].map(item => `
-                <a href="${item.url}" target="_blank" class="flex items-center space-x-3 group mb-4">
-                    <i class="fas fa-award text-accent-color"></i>
-                    <span class="text-gray-300 group-hover:underline">${item.name}</span>
-                </a>
-            `).join('');
-        };
-
-        const renderChart = () => {
-            const skillsData = {
-                labels: translations[currentLang].skills_labels, // <-- ESTA ES LA LÍNEA QUE CAMBIA
-                datasets: [{
-                    label: 'Nivel de Competencia',
-                    data: [90, 85, 95, 80, 75],
-                    backgroundColor: 'rgba(34, 211, 238, 0.2)',
-                    borderColor: 'rgba(34, 211, 238, 1)',
-                    pointBackgroundColor: 'rgba(34, 211, 238, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(34, 211, 238, 1)'
-                }]
+        /**
+         * Debounce function para optimizar eventos
+         */
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
             };
+        };
 
-            if (skillsChart) skillsChart.destroy();
-            
-            const ctx = document.getElementById('skillsChart').getContext('2d');
-            skillsChart = new Chart(ctx, {
-                type: 'radar',
-                data: skillsData,
-                options: {
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { color: 'rgba(100, 116, 139, 0.3)' },
-                            grid: { color: 'rgba(100, 116, 139, 0.3)' },
-                            pointLabels: { font: { size: 14, family: 'Inter', weight: '600' }, color: '#E5E7EB' },
-                            ticks: { display: false, stepSize: 25 },
-                            min: 0,
-                            max: 100
-                        }
-                    },
-                    plugins: { 
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) { return `${context.dataset.label}: ${context.raw}%`; }
+        /**
+         * Función para manejar errores
+         */
+        const handleError = (error, context = 'Unknown') => {
+            console.error(`Error in ${context}:`, error);
+        };
+
+        /* =================================================================== */
+        /* CONTENT RENDERING FUNCTIONS                                         */
+        /* =================================================================== */
+        
+        /**
+         * Renderiza todo el contenido basado en el idioma actual
+         */
+        const renderContent = () => {
+            try {
+                const lang = AppState.currentLang;
+                const currentTranslations = translations[lang];
+                
+                if (!currentTranslations) {
+                    throw new Error(`Translations not found for language: ${lang}`);
+                }
+
+                // Actualizar textos traducibles
+                $$('[data-key]').forEach(element => {
+                    const key = element.dataset.key;
+                    if (currentTranslations[key]) {
+                        element.innerHTML = currentTranslations[key];
+                    }
+                });
+
+                // Actualizar idioma del documento y enlaces
+                document.documentElement.lang = lang;
+                $('#cv-download-link')?.setAttribute('href', currentTranslations.nav_cv_path);
+                $('#cv-download-link-mobile')?.setAttribute('href', currentTranslations.nav_cv_path);
+                
+                // Renderizar contenido dinámico
+                renderExperience();
+                renderProjects();
+                renderEducationAndCerts();
+                renderSkillsChart();
+            } catch (error) {
+                handleError(error, 'renderContent');
+            }
+        };
+
+        /**
+         * Renderiza la sección de experiencia
+         */
+        const renderExperience = () => {
+            try {
+                const container = $('#experience-container');
+                if (!container) return;
+
+                const experiences = experienceData[AppState.currentLang] || [];
+                
+                container.innerHTML = experiences.map((item, index) => `
+                    <article class="timeline-item stagger-animation" style="--animation-order: ${index}" role="listitem">
+                        <div class="timeline-icon" aria-hidden="true">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <header>
+                            <h3 class="text-xl font-bold text-white">${item.role}</h3>
+                            <p class="text-md font-semibold accent-color mb-2">${item.company}</p>
+                            <time class="text-sm text-gray-400 mb-3" datetime="${item.date}">${item.date}</time>
+                        </header>
+                        <div class="text-gray-300">${item.details}</div>
+                    </article>
+                `).join('');
+            } catch (error) {
+                handleError(error, 'renderExperience');
+            }
+        };
+
+        /**
+         * Renderiza la sección de proyectos
+         */
+        const renderProjects = () => {
+            try {
+                const grid = $('#project-grid');
+                if (!grid) return;
+
+                const projects = projectsData[AppState.currentLang] || [];
+                
+                grid.innerHTML = projects.map((project, index) => `
+                    <article class="glass-card project-card rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 group cursor-pointer stagger-animation" 
+                             style="--animation-order: ${index}"
+                             data-index="${index}" 
+                             role="listitem"
+                             tabindex="0"
+                             aria-label="Proyecto: ${project.title}"
+                             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}">
+                        <div class="overflow-hidden h-48">
+                            <img src="${project.image}" 
+                                 alt="Imagen del proyecto ${project.title}" 
+                                 class="w-full h-full object-cover project-image"
+                                 loading="lazy"
+                                 width="400"
+                                 height="200">
+                        </div>
+                        <div class="p-6 flex flex-col">
+                            <header>
+                                <h3 class="text-xl font-bold text-white mb-2">${project.title}</h3>
+                            </header>
+                            <div class="flex flex-wrap gap-2 mb-4" role="list" aria-label="Tecnologías utilizadas">
+                                ${project.tags.map(tag => `<span class="bg-slate-700 text-xs font-medium px-2 py-1 rounded-full" role="listitem">${tag}</span>`).join('')}
+                            </div>
+                            <div class="flex-grow"></div>
+                            <footer class="mt-4">
+                                <span class="w-full text-center text-accent-color font-semibold py-2" data-key="modal_button">
+                                    ${translations[AppState.currentLang].modal_button}
+                                </span>
+                            </footer>
+                        </div>
+                    </article>
+                `).join('');
+            } catch (error) {
+                handleError(error, 'renderProjects');
+            }
+        };
+
+        /**
+         * Renderiza educación y certificaciones
+         */
+        const renderEducationAndCerts = () => {
+            try {
+                const eduContainer = $('#education-container');
+                const certsContainer = $('#certs-container');
+                
+                if (eduContainer) {
+                    const education = educationData[AppState.currentLang] || [];
+                    eduContainer.innerHTML = `
+                        <h3 class="text-2xl font-bold text-white mb-6">
+                            ${AppState.currentLang === 'es' ? 'Educación' : 'Education'}
+                        </h3>
+                    ` + education.map(item => `
+                        <article class="mb-6">
+                            <header>
+                                <h4 class="text-lg font-semibold text-white">${item.degree}</h4>
+                                <p class="accent-color">${item.institution}</p>
+                                <time class="text-sm text-gray-500" datetime="${item.date}">${item.date}</time>
+                            </header>
+                        </article>
+                    `).join('');
+                }
+                
+                if (certsContainer) {
+                    const certs = certsData[AppState.currentLang] || [];
+                    certsContainer.innerHTML = `
+                        <h3 class="text-2xl font-bold text-white mb-6">
+                            ${AppState.currentLang === 'es' ? 'Certificaciones Clave' : 'Key Certifications'}
+                        </h3>
+                    ` + certs.map(item => `
+                        <a href="${item.url}" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="flex items-center space-x-3 group mb-4 focus-ring"
+                           aria-label="Certificación: ${item.name}">
+                            <i class="fas fa-award text-accent-color" aria-hidden="true"></i>
+                            <span class="text-gray-300 group-hover:underline">${item.name}</span>
+                        </a>
+                    `).join('');
+                }
+            } catch (error) {
+                handleError(error, 'renderEducationAndCerts');
+            }
+        };
+
+        /**
+         * Renderiza el gráfico de habilidades
+         */
+        const renderSkillsChart = () => {
+            try {
+                const canvas = $('#skillsChart');
+                if (!canvas) return;
+
+                const skillsData = {
+                    labels: translations[AppState.currentLang].skills_labels,
+                    datasets: [{
+                        label: AppState.currentLang === 'es' ? 'Nivel de Competencia' : 'Competency Level',
+                        data: [90, 85, 95, 80, 75],
+                        backgroundColor: 'rgba(34, 211, 238, 0.2)',
+                        borderColor: 'rgba(34, 211, 238, 1)',
+                        pointBackgroundColor: 'rgba(34, 211, 238, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(34, 211, 238, 1)',
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                };
+
+                // Destruir gráfico anterior si existe
+                if (AppState.skillsChart) {
+                    AppState.skillsChart.destroy();
+                }
+                
+                const ctx = canvas.getContext('2d');
+                AppState.skillsChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: skillsData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: CONFIG.CHART_ANIMATION_DURATION,
+                            easing: 'easeInOutQuart'
+                        },
+                        scales: {
+                            r: {
+                                angleLines: { 
+                                    color: 'rgba(100, 116, 139, 0.3)',
+                                    lineWidth: 1
+                                },
+                                grid: { 
+                                    color: 'rgba(100, 116, 139, 0.3)',
+                                    lineWidth: 1
+                                },
+                                pointLabels: { 
+                                    font: { 
+                                        size: 14, 
+                                        family: 'Inter', 
+                                        weight: '600' 
+                                    }, 
+                                    color: '#E5E7EB' 
+                                },
+                                ticks: { 
+                                    display: false, 
+                                    stepSize: 25 
+                                },
+                                min: 0,
+                                max: 100
+                            }
+                        },
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                                titleColor: '#E5E7EB',
+                                bodyColor: '#E5E7EB',
+                                borderColor: '#22D3EE',
+                                borderWidth: 1,
+                                callbacks: {
+                                    label: function(context) { 
+                                        return `${context.dataset.label}: ${context.raw}%`; 
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            } catch (error) {
+                handleError(error, 'renderSkillsChart');
+            }
         };
 
-        // --- EVENT LISTENERS & INITIALIZATION ---
-        const langToggleDesktop = document.getElementById('language-toggle-desktop');
-        const langToggleMobile = document.getElementById('language-toggle-mobile');
-
-        function syncToggles(source) {
-            const isChecked = source.checked;
-            langToggleDesktop.checked = isChecked;
-            langToggleMobile.checked = isChecked;
-            currentLang = isChecked ? 'en' : 'es';
-            localStorage.setItem('language', currentLang);
-            renderContent();
-        }
-
-        langToggleDesktop.addEventListener('change', () => syncToggles(langToggleDesktop));
-        langToggleMobile.addEventListener('change', () => syncToggles(langToggleMobile));
-
-        const savedLang = localStorage.getItem('language') || 'es';
-        currentLang = savedLang;
-        langToggleDesktop.checked = savedLang === 'en';
-        langToggleMobile.checked = savedLang === 'en';
         
-        renderContent();
-        
-        // Typewriter effect
-        const typewriterElement = document.getElementById('typewriter');
-        let textIndex = 0;
-        let charIndex = 0;
-        function type() {
-            const currentText = translations[currentLang].typewriter[textIndex];
-            typewriterElement.textContent = currentText.substring(0, charIndex);
-            charIndex++;
-            if (charIndex > currentText.length) {
-                charIndex = 0;
-                textIndex = (textIndex + 1) % translations[currentLang].typewriter.length;
-                setTimeout(type, 2000);
-            } else {
-                setTimeout(type, 100);
-            }
-        }
-        type();
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            document.getElementById('navbar').classList.toggle('navbar-scrolled', window.scrollY > 50);
-        });
+        /* =================================================================== */
+        /* EVENT HANDLERS                                                      */
+        /* =================================================================== */
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        /**
+         * Inicializa los toggles de idioma
+         */
+        const initLanguageToggles = () => {
+            try {
+                const desktopToggle = $('#language-toggle-desktop');
+                const mobileToggle = $('#language-toggle-mobile');
 
-        // --- INICIO DEL BLOQUE DE CÓDIGO ACTUALIZADO ---
+                const syncToggles = (source) => {
+                    const isChecked = source.checked;
+                    if (desktopToggle) desktopToggle.checked = isChecked;
+                    if (mobileToggle) mobileToggle.checked = isChecked;
+                    
+                    AppState.currentLang = isChecked ? 'en' : 'es';
+                    localStorage.setItem('language', AppState.currentLang);
+                    renderContent();
+                };
 
-        // Modal Logic
-        const projectModal = document.getElementById('projectModal');
-        const modalContent = document.getElementById('modalContent');
-        const closeModalButton = document.getElementById('closeModal');
-
-        // Evento para ABRIR el modal al hacer clic en una tarjeta de proyecto
-        document.getElementById('project-grid').addEventListener('click', (e) => {
-            const card = e.target.closest('.project-card');
-            if (card) {
-                const index = card.dataset.index;
-                const project = projectsData[currentLang][index];
-
-                // --- INICIO DE LOS CAMBIOS ---
-
-                // 1. Poblar el contenido del modal (incluyendo la nueva imagen)
-                document.getElementById('modalTitle').textContent = project.title;
-                document.getElementById('modalImage').src = project.image; // <-- LÍNEA AÑADIDA
-                document.getElementById('modalTags').innerHTML = project.tags.map(tag => `<span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`).join('');
-                document.getElementById('modalDescription').innerHTML = project.description;
-                document.getElementById('modalGithubLink').href = project.githubUrl;
-
-                // 2. Lógica para mostrar el botón "Ver Reporte" solo si existe la URL
-                const liveLink = document.getElementById('modalLiveLink');
-                if (liveLink) { // Comprobación de seguridad
-                    if (project.liveUrl && project.liveUrl !== '#') {
-                        liveLink.href = project.liveUrl;
-                        liveLink.style.display = 'flex'; // Muestra el botón
-                        liveLink.querySelector('span').textContent = translations[currentLang].modal_live || 'Ver Reporte';
-                    } else {
-                        liveLink.style.display = 'none'; // Oculta el botón si no hay URL
-                    }
+                if (desktopToggle) {
+                    desktopToggle.addEventListener('change', () => syncToggles(desktopToggle));
                 }
-                
-                // --- FIN DE LOS CAMBIOS ---
+                if (mobileToggle) {
+                    mobileToggle.addEventListener('change', () => syncToggles(mobileToggle));
+                }
 
-                // 3. Mostrar el modal con la animación
-                projectModal.classList.remove('hidden');
-                setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+                // Cargar idioma guardado
+                const savedLang = localStorage.getItem('language') || 'es';
+                AppState.currentLang = savedLang;
+                if (desktopToggle) desktopToggle.checked = savedLang === 'en';
+                if (mobileToggle) mobileToggle.checked = savedLang === 'en';
+            } catch (error) {
+                handleError(error, 'initLanguageToggles');
             }
-        });
+        };
 
-        // Función para CERRAR el modal
-        function closeModal() {
-            modalContent.classList.add('scale-95');
-            setTimeout(() => projectModal.classList.add('hidden'), 300);
-        }
+        /**
+         * Inicializa el efecto de typewriter
+         */
+        const initTypewriter = () => {
+            try {
+                const typewriterElement = $('#typewriter');
+                if (!typewriterElement) return;
 
-        // Eventos para CERRAR el modal
-        if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
-        if (projectModal) projectModal.addEventListener('click', (e) => {
-            // Cierra el modal si se hace clic en el fondo oscuro
-            if (e.target === projectModal) closeModal();
-        });
-
-
-        // Fade-in animations
-        const faders = document.querySelectorAll('.fade-in-section');
-        const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const appearOnScroll = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
+                let textIndex = 0;
+                let charIndex = 0;
                 
-                // Animación secundaria para el tech-stack (Restaurada)
-                if (entry.target.id === 'about') {
-                    const techStack = document.querySelectorAll('#tech-stack-container span');
-                    techStack.forEach(span => {
-                        span.classList.remove('opacity-0', 'translate-y-3');
+                const type = () => {
+                    const currentTexts = translations[AppState.currentLang].typewriter;
+                    const currentText = currentTexts[textIndex];
+                    
+                    typewriterElement.textContent = currentText.substring(0, charIndex);
+                    charIndex++;
+                    
+                    if (charIndex > currentText.length) {
+                        charIndex = 0;
+                        textIndex = (textIndex + 1) % currentTexts.length;
+                        setTimeout(type, CONFIG.TYPEWRITER_PAUSE);
+                    } else {
+                        setTimeout(type, CONFIG.TYPEWRITER_SPEED);
+                    }
+                };
+                
+                type();
+            } catch (error) {
+                handleError(error, 'initTypewriter');
+            }
+        };
+
+        /**
+         * Inicializa el manejo del scroll del navbar
+         */
+        const initNavbarScroll = () => {
+            try {
+                const navbar = $('#navbar');
+                if (!navbar) return;
+
+                const handleScroll = debounce(() => {
+                    navbar.classList.toggle('navbar-scrolled', window.scrollY > CONFIG.SCROLL_THRESHOLD);
+                }, 10);
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+            } catch (error) {
+                handleError(error, 'initNavbarScroll');
+            }
+        };
+
+        /**
+         * Inicializa el menú móvil
+         */
+        const initMobileMenu = () => {
+            try {
+                const mobileMenuButton = $('#mobile-menu-button');
+                const mobileMenu = $('#mobile-menu');
+                const mobileMenuLinks = $$('#mobile-menu a');
+                
+                if (mobileMenuButton && mobileMenu) {
+                    mobileMenuButton.addEventListener('click', () => {
+                        const isHidden = mobileMenu.classList.toggle('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+                    });
+
+                    // Cerrar menú al hacer clic en enlaces
+                    mobileMenuLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        });
                     });
                 }
-                
-                observer.unobserve(entry.target);
-            });
-        }, appearOptions);
+            } catch (error) {
+                handleError(error, 'initMobileMenu');
+            }
+        };
 
-        faders.forEach(fader => appearOnScroll.observe(fader));
+        /**
+         * Inicializa el modal de proyectos
+         */
+        const initProjectModal = () => {
+            try {
+                const modal = $('#projectModal');
+                const modalContent = $('#modalContent');
+                const closeButton = $('#closeModal');
+                const projectGrid = $('#project-grid');
+
+                if (!modal || !modalContent || !closeButton || !projectGrid) return;
+
+                const openModal = (projectIndex) => {
+                    const project = projectsData[AppState.currentLang][projectIndex];
+                    if (!project) return;
+
+                    // Poblar contenido del modal
+                    const modalTitle = $('#modalTitle');
+                    const modalImage = $('#modalImage');
+                    const modalTags = $('#modalTags');
+                    const modalDescription = $('#modalDescription');
+                    const modalGithubLink = $('#modalGithubLink');
+                    const modalLiveLink = $('#modalLiveLink');
+
+                    if (modalTitle) modalTitle.textContent = project.title;
+                    if (modalImage) {
+                        modalImage.src = project.image;
+                        modalImage.alt = `Imagen del proyecto ${project.title}`;
+                    }
+                    if (modalTags) {
+                        modalTags.innerHTML = project.tags.map(tag => 
+                            `<span class="bg-slate-700 text-sm font-medium px-3 py-1 rounded-full" role="listitem">${tag}</span>`
+                        ).join('');
+                    }
+                    if (modalDescription) modalDescription.innerHTML = project.description;
+                    if (modalGithubLink) modalGithubLink.href = project.githubUrl;
+                    
+                    // Manejar botón de demo/reporte
+                    if (modalLiveLink) {
+                        if (project.liveUrl && project.liveUrl !== '#') {
+                            modalLiveLink.href = project.liveUrl;
+                            modalLiveLink.style.display = 'flex';
+                            const liveSpan = modalLiveLink.querySelector('span');
+                            if (liveSpan) {
+                                liveSpan.textContent = translations[AppState.currentLang].modal_live || 'Ver Reporte';
+                            }
+                        } else {
+                            modalLiveLink.style.display = 'none';
+                        }
+                    }
+
+                    // Mostrar modal con animación
+                    modal.classList.remove('hidden');
+                    modal.setAttribute('aria-hidden', 'false');
+                    setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+                    
+                    // Focus management
+                    closeButton.focus();
+                };
+
+                const closeModal = () => {
+                    modalContent.classList.add('scale-95');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        modal.setAttribute('aria-hidden', 'true');
+                    }, 300);
+                };
+
+                // Event listeners
+                projectGrid.addEventListener('click', (e) => {
+                    const card = e.target.closest('.project-card');
+                    if (card) {
+                        const index = parseInt(card.dataset.index);
+                        openModal(index);
+                    }
+                });
+
+                closeButton.addEventListener('click', closeModal);
+                
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                // Keyboard navigation
+                modal.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    }
+                });
+            } catch (error) {
+                handleError(error, 'initProjectModal');
+            }
+        };
+
+        /**
+         * Inicializa las animaciones de scroll
+         */
+        const initScrollAnimations = () => {
+            try {
+                const faders = $$('.fade-in-section');
+                if (!faders.length) return;
+
+                const appearOnScroll = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        
+                        entry.target.classList.add('is-visible');
+                        
+                        // Animaciones en cascada para elementos con stagger
+                        const staggerElements = entry.target.querySelectorAll('.stagger-animation');
+                        staggerElements.forEach((element, index) => {
+                            setTimeout(() => {
+                                element.style.opacity = '1';
+                                element.style.transform = 'translateY(0)';
+                            }, index * 100);
+                        });
+                        
+                        AppState.observers.set(entry.target, true);
+                        appearOnScroll.unobserve(entry.target);
+                    });
+                }, {
+                    threshold: CONFIG.INTERSECTION_THRESHOLD,
+                    rootMargin: CONFIG.INTERSECTION_ROOT_MARGIN
+                });
+
+                faders.forEach(fader => {
+                    appearOnScroll.observe(fader);
+                    AppState.observers.set(fader, false);
+                });
+            } catch (error) {
+                handleError(error, 'initScrollAnimations');
+            }
+        };
+
+        /* =================================================================== */
+        /* INITIALIZATION                                                      */
+        /* =================================================================== */
+
+        /**
+         * Inicialización principal de la aplicación
+         */
+        const init = async () => {
+            try {
+                if (AppState.isInitialized) return;
+
+                // Configurar año del footer
+                const yearElement = $('#year');
+                if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+                // Inicializar componentes
+                initLanguageToggles();
+                initMobileMenu();
+                initNavbarScroll();
+                initScrollAnimations();
+                initProjectModal();
+
+                // Renderizar contenido inicial
+                renderContent();
+                
+                // Inicializar efectos después del renderizado
+                setTimeout(() => {
+                    initTypewriter();
+                }, 100);
+
+                AppState.isInitialized = true;
+                console.log('✅ Portfolio initialized successfully');
+            } catch (error) {
+                handleError(error, 'init');
+            }
+        };
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', init);
         
-        document.getElementById('year').textContent = new Date().getFullYear();
-        // --- CIERRE AUTOMÁTICO DEL MENÚ MÓVIL ---
-        const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-    });
+        // Reinicializar si la ventana se redimensiona (para gráficos)
+        window.addEventListener('resize', debounce(() => {
+            if (AppState.skillsChart) {
+                AppState.skillsChart.resize();
+            }
+        }, 250));
+    </script>
     </script>
 </body>
 </html>
